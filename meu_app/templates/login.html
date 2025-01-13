@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,6 +9,11 @@
 </head>
 <body>
     <div class="container-login">
+        
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </div>
+
         <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
             <h2>Login</h2>
