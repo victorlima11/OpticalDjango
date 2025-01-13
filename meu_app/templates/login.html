@@ -9,14 +9,13 @@
 </head>
 <body>
     <div class="container-login">
-        
+
         <div class="logo">
-            <img src="{% static 'images/logo.png' %}" alt="Logo">
+            <img src="{% static 'assets/logo.png' %}" alt="Logo">
         </div>
 
         <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
-            <h2>Login</h2>
             
             <div class="campo-input">
                 <label for="username">Usuário</label>
