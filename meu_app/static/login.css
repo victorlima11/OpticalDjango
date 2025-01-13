@@ -1,0 +1,96 @@
+/* login.css */
+
+/* Resetando margens e padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container-login {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.campo-input {
+    margin-bottom: 15px;
+}
+
+.campo-input label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.campo-input input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.campo-input input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.grupo-botoes {
+    text-align: center;
+}
+
+.grupo-botoes button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.grupo-botoes button:hover {
+    background-color: #45a049;
+}
+
+.rodape {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.rodape a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.rodape a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 600px) {
+    .container-login {
+        width: 90%;
+    }
+}
