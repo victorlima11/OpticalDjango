@@ -5,17 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
 </head>
 <body>
 
     <div class="container-cadastro">
         <div class="logo">
            
-            <img src="{% static 'logo.png' %}" alt="Logo">
+            <img src="{% static 'assets/logo.png' %}" alt="Logo">
         </div>
-
-        <h2>Cadastre-se</h2>
 
         <form method="POST">
             {% csrf_token %}
