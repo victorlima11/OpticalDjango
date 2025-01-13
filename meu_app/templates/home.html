@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Responsivo</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="logo-container">
+            <img src="{% static 'assents/@duarte.otica.png' %}" alt="Duarte Ótica Logo" class="logo">
+        </div>
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{% url 'sobre' %}" class="nav-link">Sobre</a></li>
+                <li class="nav-item"><a href="{% url 'contato' %}" class="nav-link">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="logo-carrinho">
+            <img src="{% static 'assents/cart.png' %}" alt="carrinho" class="carrinho">
+        </div>
+    </header>
+
+    <!-- Banners Section -->
+    <section class="banners">
+        <div class="banner">
+            <img src="{% static 'assents/banner1.jpg' %}" alt="Banner 1">
+        </div>
+        <div class="banner">
+            <img src="{% static 'assents/banner2.jpg' %}" alt="Banner 2">
+        </div>
+        <div class="banner">
+            <img src="{% static 'assents/banner3.jpg' %}" alt="Banner 3">
+        </div>
+    </section>
+</body>
+</html>
