@@ -6,16 +6,18 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
+def home(request):
+    return render(request, 'home.html')
+
 def catalogo(request):
     return render(request, 'catalogo.html')
 
-<<<<<<< HEAD
 def contato(request):
     return render(request, '#' )
 
 def sobre(request):
     return render(request, '#')
-=======
+
 def carrinho(request):
     return render (request, 'carrinho.html')
 
@@ -56,4 +58,4 @@ def cadastro_usuario(request):
         except Exception as e:
             return HttpResponse(f"Erro ao cadastrar usuário: {e}. <a href='/cadastrar_usuario/'>Tente novamente</a>")
     return render(request, 'cadastro_usuario.html')
->>>>>>> 6cc00cf810926e457e9f41f3aac15d4ec34c4277
+
