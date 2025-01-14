@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container-cadastro {
+    background-color: #faf6ef;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+.logo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.campo-input {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.campo-input label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+}
+
+.campo-input input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.campo-input input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.grupo-botoes {
+    text-align: center;
+}
+
+.grupo-botoes button {
+    width: 100%;
+    padding: 14px;
+    background-color: #e6b800; /* Cor dourada */
+    color: white;
+    border: 2px solid #e6b800;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.grupo-botoes button:hover {
+    background-color: #d69f00;
+    border-color: #d69f00;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
+}
+
+.grupo-botoes button:active {
+    transform: translateY(2px);
+}
+
+.rodape {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+.rodape a {
+    color: #d69f00;
+    text-decoration: none;
+}
+
+.rodape a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 600px) {
+    .container-cadastro {
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+}
