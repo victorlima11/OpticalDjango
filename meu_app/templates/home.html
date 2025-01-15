@@ -25,17 +25,124 @@
         </div>
     </header>
 
-    <!-- Banners Section -->
-    <section class="banners">
-        <div class="banner">
-            <img src="{% static 'assents/banner1.jpg' %}" alt="Banner 1">
+    <div class="banner">
+        <div class="banner-content">
+            <img src="{% static 'assents/banner1.png' %}" alt="Banner de verão">
+            <button class="btn-banner">Compre agora</button>
         </div>
-        <div class="banner">
-            <img src="{% static 'assents/banner2.jpg' %}" alt="Banner 2">
+    </div>
+    
+    <div class="icons">
+        <div class="icon-container">
+            <img src="{% static 'assents//icon1.png' %}" alt="Ícone 1" class="icon">
+            <p class="icon-text">Marcas Exclusivas e <br> as Melhores Grifes</p>
         </div>
-        <div class="banner">
-            <img src="{% static 'assents/banner3.jpg' %}" alt="Banner 3">
+        <div class="icon-container">
+            <img src="{% static 'assents//icon2.png' %}" alt="Ícone 2" class="icon">
+            <p class="icon-text">Entrega Gratuita Para Fortaleza</p>
         </div>
-    </section>
-</body>
-</html>
+        <div class="icon-container">
+            <img src="{% static 'assents//icon3.png' %}" alt="Ícone 3" class="icon">
+            <p class="icon-text">Entrega de 1 á 4 dias</p>
+        </div>
+    </div>
+    
+    <div class="message-section">
+        <div class="message-item">
+            <!-- Caixa da imagem -->
+            <div class="image-box">
+                <img src="{% static 'assents//image-box.png' %}" alt="Ícone Ajuda" class="message-icon">
+            </div>
+            <!-- Caixa dos textos e botão -->
+            <div class="text-box">
+                <h1>Está com dificuldade para enxergar bem ou com dor de cabeça?</h1>
+                <h2>Óculos desgastados ou ultrapassados? <br> Temos as últimas tendências.</h2>
+                <h2>Precisa de óculos mais confortáveis?<br> Oferecemos lentes leves e personalizadas.</h2>
+                <h2>Preocupado com o preço? <br> Temos as melhores condições e parcelamentos.</h2>
+                <a href="https://wa.me/5585999381801" class="whatsapp-button">Conversar no WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="services-icons">
+        <div class="service-icon">
+            <img src=" {% static 'assents/1.png' %}" alt="service-icon" class="service">
+            <p class="service-text">Oculos de Grau</p>
+        </div>
+
+        <div class="service-icon">
+            <img src="{% static 'assents/4.png' %}" alt="service-icon" class="service">
+            <p class="service-text">Oculos Solar</p>
+        </div>
+
+        <div class="service-icon">
+            <img src=" {% static 'assents/2.png' %}" alt="service-icon" class="service">
+            <p class="service-text">Lentes de Contato</p>
+        </div>
+
+        <div class="service-icon">
+            <img src=" {% static 'assents/3.png' %}" alt="service-icon" class="service">
+            <p class="service-text">Oculos Infantil </p>
+        </div>
+    </div>
+
+
+    <div class="appointment-frame">
+        <!-- Imagem à esquerda -->
+        <div class="appointment-image">
+            <img src="{% static 'assents/9.png' %}" alt="Exame oftalmológico">
+        </div>
+    
+        <!-- Informações à direita -->
+        <div class="appointment-info">
+            <h2>Agende seu exame oftalmológico</h2>
+            <p>
+                Verifique sua saúde ocular com nossos exames oftalmológicos. 
+                Garantimos um atendimento especializado e equipamentos modernos 
+                para o cuidado dos seus olhos.
+            </p>
+            <p>
+                <strong>Horários disponíveis:</strong> Segunda a sexta, das 8h às 18h.
+            </p>
+            <p>
+                <strong>Contato:</strong> Ligue para (XX) XXXX-XXXX ou envie uma mensagem no WhatsApp.
+            </p>
+            <button class="btn-schedule">Agendar Exame</button>
+        </div>
+    </div>
+
+    <div class="icons-marcas">
+        <div class="marca-header">
+            <h1>Confira nossas Marcas</h1>
+        </div>
+        <div class="marca-icons">
+            <div class="marca-icon">
+                <img src="{% static 'assents/marca1.png' %}" alt="Marca 1">
+                <p>Marca 1</p>
+            </div>
+            <div class="marca-icon">
+                <img src="{% static 'assents/marca2.png' %}" alt="Marca 2">
+                <p>Marca 2</p>
+            </div>
+            <div class="marca-icon">
+                <img src="{% static 'assents/marca3.png' %}" alt="Marca 3">
+                <p>Marca 3</p>
+            </div>
+            <div class="marca-icon">
+                <img src="{% static 'assents/marca4.png' %}" alt="Marca 4">
+                <p>Marca 4</p>
+            </div>
+        </div>
+    </div>
+    <div class="armacao-service">
+        <div class="armacao-content">
+            <h1>Armação para Óculos de Grau Unissex</h1>
+            <h2>Combine suas lentes com suas armações favoritas na Duarte Ótica</h2>
+            <button onclick="window.location.href='/armacoes/'">Ver Armações</button>
+        </div>
+        <div class="armacao-image">
+            <img src="{% static 'assents/armacao.png' %}" alt="Imagem de armação para óculos">
+        </div>
+    </div>
+    

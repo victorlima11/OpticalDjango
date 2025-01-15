@@ -13,7 +13,7 @@
     justify-content: space-around;
     align-items: center;
     padding: 10px;
-    background-color: #333;
+    background-color: #efb810 ;
     color: white;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
@@ -31,7 +31,10 @@
     justify-content: space-around;
     width: 50%;
 }
-
+.carrinho {
+    width: 50px; /* Define a largura da imagem */
+    height: auto; /* Ajusta a altura automaticamente para manter a proporção */
+}
 .nav-list {
     list-style-type: none;
     display: flex;
@@ -48,36 +51,450 @@
     color: white;
     font-weight: bold;
 }
-
-/* Estilo para os banners */
-.banners {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    gap: 15px;
-}
-
+/* Estilo do Banner */
+/* Container do banner */
+/* Container do banner */
 .banner {
-    width: 30%;
-    height: auto;
+    margin: 20px auto;
+    max-width: 1200px;
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative; /* Necessário para o posicionamento do botão */
 }
 
+/* Imagem do banner */
 .banner img {
+    display: block; /* Remove o espaço extra abaixo da imagem */
+    width: 100%; /* Faz a imagem ocupar toda a largura disponível */
+    height: 100%; /* Faz a imagem ocupar toda a altura do container */
+    object-fit: cover; /* Faz a imagem cobrir toda a área sem distorcer */
+}
+
+/* Botão dentro do banner */
+.banner-content {
+    position: relative; /* Para o botão ser posicionado dentro */
+    height: 300px; /* Ajuste a altura do banner conforme necessário */
+}
+
+/* Botão do banner */
+.btn-banner {
+    position: absolute; /* Posiciona o botão de forma absoluta dentro do banner */
+    bottom: 20px; /* Ajuste o botão para a parte inferior */
+    left: 50%; /* Centraliza o botão horizontalmente */
+    transform: translateX(-50%); /* Ajuste de centralização */
+    padding: 10px 20px;
+    background-color: #ff5733;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse no botão */
+.btn-banner:hover {
+    background-color:green;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Banner */
+.banner {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.banner-img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    object-fit: cover;
 }
 
-/* Responsividade */
-@media screen and (max-width: 768px) {
-    .banners {
-        flex-direction: column;
-    }
+/* Ícones */
+/* Geral */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-    .banner {
-        width: 100%;
-        margin-bottom: 15px;
-    }
+/* Banner */
+.banner {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.banner-img {
+    width: 100%;
+    height: auto;
+}
+
+/* Contêiner dos ícones */
+.icons {
+    display: flex;
+    justify-content: center;
+    gap: 80px; /* Aumenta o espaçamento entre os ícones */
+    padding: 20px 0;
+    background-color: #f4f4f4;
+}
+
+.icon-container {
+    text-align: center; /* Centraliza o texto em relação ao ícone */
+}
+
+.icon {
+    width: 100px; /* Largura do ícone */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.icon:hover {
+    transform: scale(1.1); /* Efeito de zoom */
+}
+
+/* Texto abaixo dos ícones */
+.icon-text {
+    margin-top: 10px; /* Espaço entre o ícone e o texto */
+    font-size: 14px;
+    color: #333; /* Cor do texto */
+}
+/* Seção principal */
+.message-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Cada item (imagem + textos) */
+.message-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 900px;
+    padding: 20px;
+}
+
+/* Caixa da imagem */
+.image-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 180px;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message-icon {
+    width: 120px;
+    height: 120px;
+}
+
+/* Caixa de textos */
+/* Seção principal */
+.message-section {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    background-color: #f9f9f9;
+}
+
+/* Cada item (imagem + textos) */
+.message-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    width: 1100px; /* Frame mais largo */
+    padding: 30px; /* Maior espaçamento interno */
+}
+
+/* Caixa da imagem */
+.image-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px; /* Caixa da imagem maior */
+    height: 400px;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message-icon {
+    width: 350px; /* Imagem maior */
+    height: 370px;
+    border-radius: 10px;
+}
+
+/* Caixa de textos */
+.text-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Maior espaçamento entre as legendas */
+}
+
+.text-box h1 {
+    font-size: 22px; /* Texto principal maior */
+    color: #333;
+    margin: 0;
+    font-weight: bold; /* Destaque no título */
+}
+
+.text-box h2 {
+    font-size: 18px; /* Subtítulos maiores */
+    color: #555;
+    margin: 0;
+    font-weight: normal;
+}
+
+/* Botão do WhatsApp */
+.whatsapp-button {
+    display: inline-block;
+    background-color: #25d366;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+}
+
+.whatsapp-button:hover {
+    background-color: #1da955;
+}
+/* Seção principal dos ícones */
+.services-icons {
+    display: flex; /* Alinha as caixas em uma única linha */
+    justify-content: space-between; /* Espaçamento uniforme entre as caixas */
+    align-items: center; /* Centraliza verticalmente */
+    padding: 20px; /* Espaçamento interno da seção */
+    background-color: #f9f9f9; /* Fundo opcional para a seção */
+    gap: 10px; /* Espaçamento adicional entre as caixas */
+}
+
+/* Cada ícone de serviço */
+.service-icon {
+    display: flex;
+    flex-direction: column; /* Organiza imagem e texto em coluna */
+    align-items: center; /* Centraliza os itens no eixo horizontal */
+    background-color: #fff; /* Fundo branco para cada caixa */
+    border-radius: 15px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 15px; /* Espaçamento interno */
+    width: 150px; /* Largura fixa para uniformidade */
+    height: 200px; /* Altura fixa */
+    transition: transform 0.3s ease; /* Animação ao passar o mouse */
+}
+.service-icon img{
+    border-radius: 5px;
+}
+.service-icon:hover {
+    transform: scale(1.05); /* Efeito de zoom suave ao passar o mouse */
+}
+
+/* Estilo da imagem */
+.service {
+    width: 80px; /* Tamanho da imagem */
+    height: 80px; /* Tamanho da imagem */
+    margin-bottom: 10px; /* Espaçamento abaixo da imagem */
+}
+
+/* Estilo do texto */
+.service-text {
+    font-size: 16px; /* Tamanho do texto */
+    color: #333; /* Cor do texto */
+    font-weight: bold; /* Texto em negrito */
+    text-align: center; /* Centralização do texto */
+}
+/* Estrutura principal do frame */
+.appointment-frame {
+    display: flex; /* Cria layout em linha */
+    justify-content: space-between; /* Espaçamento uniforme */
+    align-items: center; /* Alinha verticalmente */
+    background-color: #f9f9f9; /* Fundo claro */
+    border-radius: 15px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px; /* Espaçamento interno */
+    gap: 20px; /* Espaçamento entre imagem e informações */
+    max-width: 900px; /* Largura máxima */
+    margin: 20px auto; /* Centraliza o frame na página */
+}
+
+/* Estilo da imagem */
+.appointment-image img {
+    width: 500px; /* Tamanho da imagem */
+    height: auto; /* Mantém proporção */
+    border-radius: 10px; /* Bordas arredondadas */
+    object-fit: cover; /* Ajusta a imagem ao espaço */
+}
+
+/* Informações à direita */
+.appointment-info {
+    flex: 1; /* Ocupa o espaço restante */
+    display: flex;
+    flex-direction: column; /* Organiza conteúdo em coluna */
+    justify-content: center; /* Centraliza verticalmente */
+}
+
+/* Títulos */
+.appointment-info h2 {
+    font-size: 24px; /* Tamanho maior para destaque */
+    color: #333; /* Cor do texto */
+    margin-bottom: 10px; /* Espaçamento inferior */
+}
+
+/* Texto */
+.appointment-info p {
+    font-size: 16px; /* Tamanho do texto */
+    color: #555; /* Cor secundária */
+    margin-bottom: 10px; /* Espaçamento entre parágrafos */
+}
+
+/* Botão de agendamento */
+.btn-schedule {
+    font-size: 16px; /* Tamanho do texto do botão */
+    color: #fff; /* Cor do texto */
+    background-color: #007BFF; /* Azul destacado */
+    border: none; /* Remove bordas padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 10px 20px; /* Espaçamento interno */
+    cursor: pointer; /* Indica interatividade */
+    transition: background-color 0.3s ease; /* Animação de hover */
+}
+
+.btn-schedule:hover {
+    background-color: #0056b3; /* Cor mais escura no hover */
+}
+/* Estilo da seção geral */
+/* Estilo da seção geral */
+.icons-marcas {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 900px;
+}
+
+/* Título */
+.marca-header h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Container dos ícones */
+.marca-icons {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Estilo individual dos ícones */
+.marca-icon {
+    text-align: center;
+    flex: 1 1 150px;
+    max-width: 200px;
+    margin: 10px;
+}
+
+/* Estilo das imagens */
+.marca-icon img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Estilo do texto */
+.marca-icon p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Estilo específico do frame .armacao-service */
+.armacao-service {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 40px;
+    background-image: url('{% static "assets/fundo.jpg" %}');
+    background-size: cover;
+    background-position: center;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+/* Conteúdo de texto */
+.armacao-content {
+    max-width: 50%;
+    color: white;
+}
+
+.armacao-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.armacao-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.armacao-content button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    background-color: #ff9000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.armacao-content button:hover {
+    background-color: #cc7300;
+}
+
+/* Área da Imagem */
+.armacao-image {
+    max-width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.armacao-image img {
+    max-width: 100%;
+    height: auto;
 }
