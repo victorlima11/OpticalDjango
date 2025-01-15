@@ -15,7 +15,7 @@
             <img src="{% static 'assets/logo.png' %}" alt="Logo">
         </div>
 
-        <form method="POST">
+        <form method="POST" action="{% url 'cadastro_usuario' %}">
             {% csrf_token %}
             <div class="campo-input">
                 <label for="username">Nome de Usuário</label>
@@ -28,12 +28,12 @@
             </div>
 
             <div class="campo-input">
-                <label for="password1">Senha</label>
+                <label for="password">Senha</label>
                 <input type="password" id="password1" name="password1" required>
             </div>
 
             <div class="campo-input">
-                <label for="password2">Confirmar Senha</label>
+                <label for="password_confirm">Confirmar Senha</label>
                 <input type="password" id="password2" name="password2" required>
             </div>
 

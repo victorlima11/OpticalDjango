@@ -32,9 +32,9 @@ def cadastrar_produto(request):
 def cadastro_usuario(request):
     if request.method == 'POST':
         username = request.POST.get('username')
+        email = request.POST.get('email')
         password = request.POST.get('password')
         password_confirm = request.POST.get('password_confirm')
-        email = request.POST.get('email')
 
         if password != password_confirm:
             return HttpResponse("Erro, as senhas não coincidem")
@@ -57,5 +57,6 @@ def cadastro_usuario(request):
                 return HttpResponse("Erro ao tentar fazer login após o cadastro.")
         except Exception as e:
             return HttpResponse(f"Erro ao cadastrar usuário: {e}. <a href='/cadastrar_usuario/'>Tente novamente</a>")
+
     return render(request, 'cadastro_usuario.html')
 

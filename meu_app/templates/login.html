@@ -1,20 +1,16 @@
-<<<<<<< HEAD
-=======
 {% load static %}
->>>>>>> 6cc00cf810926e457e9f41f3aac15d4ec34c4277
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-<<<<<<< HEAD
 </head>
 <body>
     
 </body>
 </html>
-=======
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body>
@@ -24,11 +20,11 @@
             <img src="{% static 'assets/logo.png' %}" alt="Logo">
         </div>
 
-        <form action="{% url 'login' %}" method="post">
+        <form  method="POST" >
             {% csrf_token %}
             
             <div class="campo-input">
-                <label for="username">Usuário</label>
+                <label for="email">Username</label>
                 <input type="text" id="username" name="username" required>
             </div>
 
@@ -48,4 +44,3 @@
     </div>
 </body>
 </html>
->>>>>>> 6cc00cf810926e457e9f41f3aac15d4ec34c4277
