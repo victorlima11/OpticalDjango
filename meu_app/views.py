@@ -9,17 +9,17 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request, 'home.html')
 
+def sobre(request):
+    return render(request, 'sobre.html')
+
 def catalogo(request):
     return render(request, 'catalogo.html')
 
 def contato(request):
-    return render(request, '#' )
-
-def sobre(request):
-    return render(request, '#')
+    return render(request, 'contato.html')
 
 def carrinho(request):
-    return render (request, 'carrinho.html')
+    return render(request, 'carrinho.html')
 
 def cadastrar_produto(request):
     if request.method == 'POST':
