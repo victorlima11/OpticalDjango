@@ -135,14 +135,33 @@
             </div>
         </div>
     </div>
-    <div class="armacao-service">
-        <div class="armacao-content">
+    
+    <div class="container">
+        <div class="text-box">
             <h1>Armação para Óculos de Grau Unissex</h1>
-            <h2>Combine suas lentes com suas armações favoritas na Duarte Ótica</h2>
-            <button onclick="window.location.href='/armacoes/'">Ver Armações</button>
+            <p>Combine as suas lentes com suas armações favoritas Ótica Duarte Ótica</p>
+            <a href="#" class="button">Ver Armações</a>
         </div>
-        <div class="armacao-image">
-            <img src="{% static 'assents/armacao.png' %}" alt="Imagem de armação para óculos">
+        <div class="image-box">
+            <img src="{% static 'assents/armacao.png' %}" alt="Imagem decorativa">
         </div>
     </div>
+
+    {% load static %}
+    <div class="video-wrapper">
+        <video autoplay muted loop class="background-video">
+            <source src="{% static 'assents/video.mp4' %}" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
+        <div class="content">
+            <h1>Garanta o seu!</h1>
+            <p>Óculos para todos os gostos. Vem ver!</p>
+        </div>
+    </div>
+    
+    
+</body>
+</html>
+</body>
+</html>
     
