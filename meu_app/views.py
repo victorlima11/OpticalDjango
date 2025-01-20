@@ -12,17 +12,17 @@ def home(request):
 def carrinho(request):
     return render(request, 'carrinho.html')
 
+def sobre(request):
+    return render(request, 'sobre.html')
+
 def catalogo(request):
     return render(request, 'catalogo.html')
 
 def contato(request):
-    return render(request, '#' )
-
-def sobre(request):
-    return render(request, '#')
+    return render(request, 'contato.html')
 
 def carrinho(request):
-    return render (request, 'carrinho.html')
+    return render(request, 'carrinho.html')
 
 def cadastrar_produto(request):
     if request.method == 'POST':
@@ -35,30 +35,37 @@ def cadastrar_produto(request):
 def cadastro_usuario(request):
     if request.method == 'POST':
         username = request.POST.get('username')
+        email = request.POST.get('email')
         password = request.POST.get('password')
         password_confirm = request.POST.get('password_confirm')
-        email = request.POST.get('email')
 
         if password != password_confirm:
-            return HttpResponse("Erro, as senhas não coincidem")
+            messages.error(request, "As senhas não coincidem.")
+            return render(request, 'cadastro_usuario.html')
+
         if User.objects.filter(username=username).exists():
-            return HttpResponse("Erro, nome de usuário em uso")
+            messages.error(request, "Nome de usuário em uso.")
+            return render(request, 'cadastro_usuario.html')
+        
         if User.objects.filter(email=email).exists():
-            return HttpResponse("Erro, email já em uso")
+            messages.error(request, "E-mail já em uso.")
+            return render(request, 'cadastro_usuario.html')
 
         try:
             user = User.objects.create_user(username=username, email=email, password=password)
             user.save()
-            
-            # Realizar login automático após cadastro
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
                 messages.success(request, "Usuário cadastrado com sucesso!")
-                return redirect('home')  # Redirecionar para a página inicial após o cadastro
+                return redirect('home')
             else:
-                return HttpResponse("Erro ao tentar fazer login após o cadastro.")
+                messages.error(request, "Erro ao tentar fazer login após o cadastro.")
+                return render(request, 'cadastro_usuario.html')
+
         except Exception as e:
-            return HttpResponse(f"Erro ao cadastrar usuário: {e}. <a href='/cadastrar_usuario/'>Tente novamente</a>")
+            messages.error(request, f"Erro ao cadastrar usuário: {e}")
+            return render(request, 'cadastro_usuario.html')
+
     return render(request, 'cadastro_usuario.html')
 

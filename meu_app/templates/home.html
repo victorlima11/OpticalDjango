@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,10 +16,10 @@
         </div>
         <nav class="navbar">
             <ul class="nav-list">
-                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="{% url 'sobre' %}" class="nav-link">Sobre</a></li>
-                <li class="nav-item"><a href="{% url 'contato' %}" class="nav-link">Contato</a></li>
-            </ul>
+                          <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                          <li class="nav-item"><a href="{% url 'sobre' %}" class="nav-link">Sobre</a></li>
+                          <li class="nav-item"><a href="{% url 'contato' %}" class="nav-link">Contato</a></li>
+                      </ul>
         </nav>
         <div class="logo-carrinho">
             <img src="{% static 'assents/cart.png' %}" alt="carrinho" class="carrinho">

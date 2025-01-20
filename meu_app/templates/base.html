@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ótica Duarte{% endblock %}</title>
+    <!-- Adicione seus estilos aqui -->
+</head>
+<body>
+    <nav class="nav-menu">
+        <a href="{% url 'meu_app:home' %}">Home</a>
+        <a href="{% url 'meu_app:sobre' %}">Sobre</a>
+        <a href="{% url 'meu_app:catalogo' %}">Catálogo</a>
+        <a href="{% url 'meu_app:contato' %}">Contato</a>
+        <a href="{% url 'meu_app:carrinho' %}">Carrinho</a>
+        {% if user.is_authenticated %}
+            <a href="#">Minha Conta</a>
+        {% else %}
+            <a href="{% url 'meu_app:cadastro_usuario' %}">Cadastro</a>
+        {% endif %}
+    </nav>
+    
+    {% block content %}
+    {% endblock %}
+</body>
+</html> 
