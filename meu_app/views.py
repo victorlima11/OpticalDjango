@@ -65,4 +65,3 @@ def cadastro_usuario(request):
             return render(request, 'cadastro_usuario.html')
 
     return render(request, 'cadastro_usuario.html')
-
