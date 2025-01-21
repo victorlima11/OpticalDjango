@@ -19,6 +19,7 @@
                 <p><strong>Preço:</strong> R$ {{ produto.preco }}</p>
                 <p><strong>Marca:</strong> {{ produto.marca }}</p>
                 <p><strong>Tipo:</strong> {{ produto.tipo }}</p>
+                <a href="{% url 'adicionar_ao_carrinho' produto.id %}">Adicionar ao Carrinho</a>
                 <a href="{% url 'produtos_lista' %}" class="btn btn-secondary mt-4">Voltar à lista</a>
             </div>
         </div>

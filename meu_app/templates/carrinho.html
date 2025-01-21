@@ -1,0 +1,15 @@
+<h1>Seu Carrinho</h1>
+{% if mensagem %}
+    <p>{{ mensagem }}</p>
+{% else %}
+    <ul>
+        {% for item in itens %}
+            <li>
+                {{ item.produto.nome }} - R$ {{ item.produto.preco }} x {{ item.quantidade }} = R$ {{ item.subtotal }}
+                <a href="{% url 'remover_do_carrinho' item.id %}">Remover</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <p>Total: R$ {{ total }}</p>
+    <a href="/checkout/">Finalizar Compra</a>
+{% endif %}
