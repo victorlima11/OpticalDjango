@@ -1,25 +1,28 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Produtos</title>
+    <link rel="stylesheet" href="{% static 'css/produtos.css' %}">
 </head>
 <body>
     <h1>Lista de Produtos</h1>
-    <ul>
+    <div class="produtos-container">
         {% for produto in produtos %}
-            <li>
-                <h2>{{ produto.nome }}</h2>
+            <div class="produto-card">
                 {% if produto.imagem_url %}
-                    <img src="{{ produto.imagem_url }}" alt="{{ produto.nome }}" width="200">
+                    <img class="produto-imagem" src="{{ produto.imagem_url }}" alt="{{ produto.nome }}">
                 {% endif %}
-                <p>Marca: {{ produto.marca }}</p>
-                <p>Tipo: {{ produto.tipo }}</p>
-                <p>Gênero: {{ produto.genero }}</p>
-                <p>Preço: R$ {{ produto.preco }}</p>
-            </li>
+                <h2 class="produto-nome">{{ produto.nome }}</h2>
+                <p class="produto-marca">Marca: {{ produto.marca }}</p>
+                <p class="produto-tipo">Tipo: {{ produto.tipo }}</p>
+                <p class="produto-genero">Gênero: {{ produto.genero }}</p>
+                <!-- Preço destacado -->
+                <button class="produto-preco">R$ {{ produto.preco }}</button>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 </body>
 </html>
