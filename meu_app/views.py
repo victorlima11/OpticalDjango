@@ -65,3 +65,11 @@ def cadastro_usuario(request):
             return render(request, 'cadastro_usuario.html')
 
     return render(request, 'cadastro_usuario.html')
+
+def produtos_lista(request):
+    produtos = Produto.objects.all()
+    return render (request, 'produtos.html', {'produtos': produtos})
+
+def produto_detalhes(request, produto_id):
+    produto = get_object_or_404(Produto, id=produto_id)
+    return render(request, 'produto_detalhes.html', {'produto': produto})
