@@ -20,7 +20,11 @@ h1 {
     padding: 20px;
 }
 
-.produto-card {
+/* Estilo do link <a> dentro do card */
+a.produto-card {
+    text-decoration: none; /* Remove sublinhado do link */
+    color: inherit; /* Herda a cor do texto do pai */
+    display: block; /* Permite que o card ocupe o espaço total */
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -30,9 +34,10 @@ h1 {
     padding: 15px;
     position: relative;
     transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer; /* Torna o card clicável */
 }
 
-.produto-card:hover {
+a.produto-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -64,7 +69,6 @@ h1 {
     font-weight: bold;
     color: #e60000;
 }
-
 
 /* Botão para Preço */
 .produto-preco {
