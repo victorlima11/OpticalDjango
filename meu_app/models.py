@@ -6,7 +6,9 @@ class Produto(models.Model):
     imagem_url = models.URLField(max_length=500, null=True, blank=True)
     preco = models.FloatField(null=False, blank=False)  # Usando FloatField conforme sua estrutura
     marca = models.TextField(null=False, blank=False)
+    genero = models.CharField(max_length=30, null=False, blank=False, default="Unissex")
     tipo = models.TextField(null=False, blank=False)
+    
 
     def __str__(self):
         return self.nome

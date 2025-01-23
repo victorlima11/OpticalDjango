@@ -65,8 +65,49 @@ def cadastro_usuario(request):
             return render(request, 'cadastro_usuario.html')
 
     return render(request, 'cadastro_usuario.html')
+  
 def minha_view(request):
     context = {
         "phone": "85999381801",
     }
     return render(request, 'whatsapp_button.html', context)
+
+def produtos_lista(request):
+    produtos = Produto.objects.all()
+    return render (request, 'produtos.html', {'produtos': produtos})
+
+def produto_detalhes(request, produto_id):
+    produto = get_object_or_404(Produto, id=produto_id)
+    return render(request, 'produto_detalhes.html', {'produto': produto})
+
+def adicionar_ao_carrinho(request, produto_id):
+    produto = get_object_or_404(Produto, id=produto_id)
+    usuario = request.user
+
+    # Verifica se o usuário já possui um carrinho
+    carrinho, criado = Carrinho.objects.get_or_create(usuario=usuario)
+
+    # Verifica se o item já está no carrinho
+    item, criado = ItemCarrinho.objects.get_or_create(carrinho=carrinho, produto=produto)
+    if not criado:
+        item.quantidade += 1
+        item.save()
+
+    return redirect('exibir_carrinho')
+
+def exibir_carrinho(request):
+    usuario = request.user
+    carrinho = Carrinho.objects.filter(usuario=usuario).first()
+
+    if not carrinho or not carrinho.itens.exists():
+        return render(request, 'carrinho.html', {'mensagem': 'Seu carrinho está vazio.'})
+
+    itens = carrinho.itens.all()
+    total = sum(item.subtotal for item in itens)
+
+    return render(request, 'carrinho.html', {'itens': itens, 'total': total})
+
+def remover_do_carrinho(request, item_id):
+    item = get_object_or_404(ItemCarrinho, id=item_id)
+    item.delete()
+    return redirect('exibir_carrinho')

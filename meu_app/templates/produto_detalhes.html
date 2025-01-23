@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ produto.nome }}</title>
+    <link rel="stylesheet" href="{% static 'css/produto_detalhes.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- Coluna da imagem -->
+            <div class="col-md-6">
+                {% if produto.imagem_url %}
+                    <img src="{{ produto.imagem_url }}" alt="{{ produto.nome }}">
+                {% endif %}
+            </div>
+
+            <!-- Coluna das informações -->
+            <div class="col-md-6">
+                <h1>{{ produto.nome }}</h1>
+                <p class="preco">R$ {{ produto.preco }}</p>
+                <p class="preco-detalhe">à vista no pix ou no cartão</p>
+
+                <a href="{% url 'adicionar_ao_carrinho' produto.id %}" class="btn-adicionar">Adicionar ao carrinho</a>
+
+                <!-- Consulta de CEP -->
+                <div class="cep-consulta">
+                    <input type="text" placeholder="00000-000" aria-label="CEP">
+                    <button>Consultar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
