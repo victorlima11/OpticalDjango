@@ -8,6 +8,7 @@ class Produto(models.Model):
     marca = models.TextField(null=False, blank=False)
     genero = models.CharField(max_length=30, null=False, blank=False, default="Unissex")
     tipo = models.TextField(null=False, blank=False)
+    
 
     def __str__(self):
         return self.nome

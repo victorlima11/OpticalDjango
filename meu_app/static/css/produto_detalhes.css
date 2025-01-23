@@ -1,0 +1,119 @@
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Container principal */
+.container {
+    max-width: 900px; /* Reduzindo o tamanho do card */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Layout em duas colunas */
+.row {
+    display: flex;
+    flex-direction: row; /* Informações lado a lado */
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Coluna da imagem */
+.col-md-6 img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.col-md-6:first-child {
+    flex: 1 1 40%; /* Ajuste de largura para a coluna da imagem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Coluna das informações */
+.col-md-6:last-child {
+    flex: 1 1 60%; /* Ajuste de largura para a coluna das informações */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Título do produto */
+h1 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Preço em destaque */
+p.preco {
+    font-size: 1.6rem;
+    color: #d90000;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Texto adicional sobre preço */
+p.preco-detalhe {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Botão de adicionar ao carrinho */
+a.btn-adicionar {
+    text-decoration: none;
+    color: #fff;
+    background-color: #28a745;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    max-width: 180px;
+}
+
+a.btn-adicionar:hover {
+    background-color: #218838;
+}
+
+/* Consulta de CEP */
+.cep-consulta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.cep-consulta input {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 130px; /* Reduzindo a largura */
+}
+
+.cep-consulta button {
+    padding: 6px 8px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.cep-consulta button:hover {
+    background-color: #218838;
+}
