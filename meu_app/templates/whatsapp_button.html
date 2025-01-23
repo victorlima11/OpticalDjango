@@ -1,0 +1,22 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/whatsapp_button.css' %}" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+<a href="whatsapp://send?phone={{ phone }}&text=Olá!%20Gostaria%20de%20mais%20informações." 
+   class="whatsapp-fixed-button" target="_blank" 
+   aria-label="Abrir WhatsApp para conversar">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>''
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const whatsappLink = document.querySelector(".whatsapp-fixed-button");
+    const phone = "{{ phone }}";
+    const message = encodeURIComponent("Olá! Gostaria de mais informações.");
+
+    if (isMobile) {
+        whatsappLink.href = `whatsapp://send?phone=${phone}&text=${message}`;
+    } else {
+        whatsappLink.href = `https://web.whatsapp.com/send?phone=${phone}&text=${message}`;
+    }
+</script>
