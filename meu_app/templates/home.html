@@ -148,7 +148,6 @@
         </div>
     </div>
 
-    {% load static %}
     <div class="video-wrapper">
         <video autoplay muted loop class="background-video">
             <source src="{% static 'assents/video.mp4' %}" type="video/mp4">
@@ -161,12 +160,37 @@
     </div>
     <div class="women-men">
         <div class="option">
-            <img src="{% static 'assents/masculino.png' %}" alt="Masculino">
-            <button>Masculino</button>
+            <img src="{% static 'assents/feminino.png' %}" alt="Masculino">
+            <button>Feminino</button>
         </div>
         <div class="option">
-            <img src="{% static 'assents/feminino.png' %}" alt="Feminino">
-            <button>Feminino</button>
+            <img src="{% static 'assents/masculino.png' %}" alt="Feminino">
+            <button>Masculino</button>
+        </div>
+    </div>
+    <div class="payment-methods">
+        <h2>Formas de Pagamento</h2>
+        <div class="payment-options">
+            <div class="payment-option">
+                <img src="{% static 'images/credit-card.png' %}" alt="Cartão de Crédito">
+                <h3>Cartão de Crédito</h3>
+                <p>Aceitamos Visa, MasterCard, American Express e Discover.</p>
+            </div>
+            <div class="payment-option">
+                <img src="{% static 'images/pix.png' %}" alt="Pix">
+                <h3>Pix</h3>
+                <p>Pagamento instantâneo, rápido e seguro.</p>
+            </div>
+            <div class="payment-option">
+                <img src="{% static 'images/boleto.png' %}" alt="Boleto Bancário">
+                <h3>Boleto Bancário</h3>
+                <p>Pague no banco ou pela internet até a data de vencimento.</p>
+            </div>
+            <div class="payment-option">
+                <img src="{% static 'images/cash-on-delivery.png' %}" alt="Pagamento na Entrega">
+                <h3>Pagamento na Entrega</h3>
+                <p>Pague em dinheiro ou cartão quando o produto chegar.</p>
+            </div>
         </div>
     </div>
     <footer>
@@ -211,7 +235,7 @@
                 </div>
             </div>
         </div>
-
+        {% include 'whatsapp_button.html' %}
         <div class="footer-bottom">
             <img src="{% static 'assets/logo.png' %}" alt="Duarte Ótica" class="footer-logo">
             <span>Todos os direitos Reservados a Duarte Otica &copy;</span>

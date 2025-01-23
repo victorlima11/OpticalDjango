@@ -65,3 +65,8 @@ def cadastro_usuario(request):
             return render(request, 'cadastro_usuario.html')
 
     return render(request, 'cadastro_usuario.html')
+def minha_view(request):
+    context = {
+        "phone": "85999381801",
+    }
+    return render(request, 'whatsapp_button.html', context)
