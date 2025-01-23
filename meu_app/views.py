@@ -18,6 +18,7 @@ def catalogo(request):
 def contato(request):
     return render(request, 'contato.html')
 
+@login_required
 def carrinho(request):
     return render(request, 'carrinho.html')
 
@@ -95,6 +96,7 @@ def adicionar_ao_carrinho(request, produto_id):
 
     return redirect('exibir_carrinho')
 
+@login_required
 def exibir_carrinho(request):
     usuario = request.user
     carrinho = Carrinho.objects.filter(usuario=usuario).first()
@@ -107,6 +109,7 @@ def exibir_carrinho(request):
 
     return render(request, 'carrinho.html', {'itens': itens, 'total': total})
 
+@login_required
 def remover_do_carrinho(request, item_id):
     item = get_object_or_404(ItemCarrinho, id=item_id)
     item.delete()
