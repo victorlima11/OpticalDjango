@@ -13,12 +13,10 @@
 <br> Django instalado 
 <br> Banco de dados SQLite
 
+**Colaboração**
+<br>Agradecemos as contribuições dos seguintes colaboradores:
 
-**Integrantes**
-<br>Lucas Duarte - GitHub: Lduarte123
-<br>João Lucas - GitHub: Joaolucasos169
-<br>Cauã Enzo - GitHub: cauaenzo
-<br>Victor Lima - GitHub: victorlima11
-
-Licença
-Distribuído sob a licença MIT. Veja LICENSE para mais informações.
+<br>**Marcos Victor** - [victorlima11](https://github.com/victorlima11)
+<br>**Cauã Enzo** - [cauaenzo](https://github.com/cauaenzo)
+<br>**Lucas Duarte** - [Lduarte123](https://github.com/Lduarte123/)
+<br>**João Lucas** - [Joaolucasos169](https://github.com/Joaolucasos169)
