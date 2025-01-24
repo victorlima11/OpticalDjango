@@ -1,15 +1,165 @@
-<h1>Seu Carrinho</h1>
-{% if mensagem %}
-    <p>{{ mensagem }}</p>
-{% else %}
-    <ul>
-        {% for item in itens %}
-            <li>
-                {{ item.produto.nome }} - R$ {{ item.produto.preco }} x {{ item.quantidade }} = R$ {{ item.subtotal }}
-                <a href="{% url 'remover_do_carrinho' item.id %}">Remover</a>
-            </li>
-        {% endfor %}
-    </ul>
-    <p>Total: R$ {{ total }}</p>
-    <a href="/checkout/">Finalizar Compra</a>
-{% endif %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Carrinho</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .carrinho-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .mensagem {
+            background-color: #d4edda;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .itens-carrinho {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .item-carrinho {
+            display: flex;
+            justify-content: space-between;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+
+        .item-carrinho .produto {
+            flex-grow: 1;
+        }
+
+        .item-carrinho a.remover {
+            color: #dc3545;
+            text-decoration: none;
+        }
+
+        .item-carrinho a.remover:hover {
+            text-decoration: underline;
+        }
+
+        .item-carrinho .alterar-quantidade {
+            display: flex;
+            gap: 10px;
+        }
+
+        .total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .finalizar, .adicionar-produto {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 1.5rem;
+            width: 100%;
+            max-width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .finalizar:hover, .adicionar-produto:hover {
+            background-color: #218838;
+        }
+
+        .adicionar-produto {
+            background-color: #007bff;
+        }
+
+        .adicionar-produto:hover {
+            background-color: #0056b3;
+        }
+
+        .remover-tudo {
+            background-color: #dc3545;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .remover-tudo:hover {
+            background-color: #c82333;
+        }
+
+        @media (max-width: 768px) {
+            .item-carrinho {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .item-carrinho .produto {
+                margin-bottom: 1rem;
+            }
+
+            .finalizar, .adicionar-produto, .remover-tudo {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Seu Carrinho</h1>
+</header>
+
+<div class="carrinho-container">
+    {% if mensagem %}
+        <p class="mensagem">{{ mensagem }}</p>
+    {% else %}
+        <ul class="itens-carrinho">
+            {% for item in itens %}
+                <li class="item-carrinho">
+                    <span class="produto">{{ item.produto.nome }} - R$ {{ item.produto.preco }} x {{ item.quantidade }} = R$ {{ item.subtotal }}</span>
+                    <div class="alterar-quantidade">
+                        <a class="remover" href="{% url 'remover_do_carrinho' item.id %}">Remover 1</a>
+                        <a class="remover" href="{% url 'adicionar_produto' item.id %}">Adicionar 1</a>
+                    </div>
+                    <a class="remover" href="{% url 'remover_tudo_do_carrinho' %}">Remover Tudo</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <p class="total">Total: R$ {{ total }}</p>
+        <a class="finalizar" href="/checkout/">Finalizar Compra</a>
+        <a class="adicionar-produto" href="{% url 'produtos_lista' %}">Continuar Comprando</a>
+    {% endif %}
+</div>
+
+</body>
+</html>

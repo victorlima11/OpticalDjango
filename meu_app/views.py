@@ -109,8 +109,44 @@ def exibir_carrinho(request):
 
     return render(request, 'carrinho.html', {'itens': itens, 'total': total})
 
+
 @login_required
 def remover_do_carrinho(request, item_id):
+    # Obtém o item do carrinho
     item = get_object_or_404(ItemCarrinho, id=item_id)
-    item.delete()
+
+    # Verifica se a quantidade do item é maior que 1
+    if item.quantidade > 1:
+        # Decrease a quantidade em 1
+        item.quantidade -= 1
+        item.save()
+    else:
+        # Se a quantidade for 1, então remove o item
+        item.delete()
+
+    # Após a remoção ou diminuição da quantidade, redireciona de volta para o carrinho
+    return redirect('exibir_carrinho')
+
+
+@login_required
+def remover_tudo_do_carrinho(request):
+    usuario = request.user
+    carrinho = Carrinho.objects.filter(usuario=usuario).first()
+
+    if carrinho:
+        # Remove todos os itens do carrinho
+        carrinho.itens.all().delete()
+
+    return redirect('exibir_carrinho')
+
+@login_required
+def adicionar(request, produto_id):
+    # Obtém o item do carrinho com base no item_id
+    item = get_object_or_404(ItemCarrinho, id=produto_id)
+
+    # Aumenta a quantidade do item em 1
+    item.quantidade += 1
+    item.save()
+
+    # Após adicionar mais um item, redireciona de volta para o carrinho
     return redirect('exibir_carrinho')
