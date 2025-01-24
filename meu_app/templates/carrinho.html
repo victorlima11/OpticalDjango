@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seu Carrinho</title>
+{% extends 'base.html' %}
+
+{% block title %}Seu Carrinho - Duarte Ótica{% endblock %}
+
+{% block content %}
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -86,8 +85,7 @@
             border-radius: 5px;
             text-align: center;
             margin-top: 1.5rem;
-            width: 100%;
-            max-width: 200px;
+            width: 30%;
             margin-left: auto;
             margin-right: auto;
         }
@@ -132,34 +130,26 @@
             }
         }
     </style>
-</head>
-<body>
 
-<header>
-    <h1>Seu Carrinho</h1>
-</header>
-
-<div class="carrinho-container">
-    {% if mensagem %}
-        <p class="mensagem">{{ mensagem }}</p>
-    {% else %}
-        <ul class="itens-carrinho">
-            {% for item in itens %}
-                <li class="item-carrinho">
-                    <span class="produto">{{ item.produto.nome }} - R$ {{ item.produto.preco }} x {{ item.quantidade }} = R$ {{ item.subtotal }}</span>
-                    <div class="alterar-quantidade">
-                        <a class="remover" href="{% url 'remover_do_carrinho' item.id %}">Remover 1</a>
-                        <a class="remover" href="{% url 'adicionar_produto' item.id %}">Adicionar 1</a>
-                    </div>
-                    <a class="remover" href="{% url 'remover_tudo_do_carrinho' %}">Remover Tudo</a>
-                </li>
-            {% endfor %}
-        </ul>
-        <p class="total">Total: R$ {{ total }}</p>
-        <a class="finalizar" href="/checkout/">Finalizar Compra</a>
-        <a class="adicionar-produto" href="{% url 'produtos_lista' %}">Continuar Comprando</a>
-    {% endif %}
-</div>
-
-</body>
-</html>
+    <div class="carrinho-container">
+        {% if mensagem %}
+            <p class="mensagem">{{ mensagem }}</p>
+        {% else %}
+            <ul class="itens-carrinho">
+                {% for item in itens %}
+                    <li class="item-carrinho">
+                        <span class="produto">{{ item.produto.nome }} - R$ {{ item.produto.preco }} x {{ item.quantidade }} = R$ {{ item.subtotal }}</span>
+                        <div class="alterar-quantidade">
+                            <a class="remover" href="{% url 'remover_do_carrinho' item.id %}">Remover 1</a>
+                            <a class="remover" href="{% url 'adicionar_produto' item.id %}">Adicionar 1</a>
+                        </div>
+                        <a class="remover" href="{% url 'remover_tudo_do_carrinho' %}">Remover Tudo</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p class="total">Total: R$ {{ total }}</p>
+            <a class="finalizar" href="/checkout/">Finalizar Compra</a>
+            <a class="adicionar-produto" href="{% url 'produtos_lista' %}">Continuar Comprando</a>
+        {% endif %}
+    </div>
+{% endblock %}

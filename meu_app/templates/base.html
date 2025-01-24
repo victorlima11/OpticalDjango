@@ -1,27 +1,36 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Ótica Duarte{% endblock %}</title>
-    <!-- Adicione seus estilos aqui -->
+    <title>{% block title %}Duarte Ótica{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
-    <nav class="nav-menu">
-        <a href="{% url 'meu_app:home' %}">Home</a>
-        <a href="{% url 'meu_app:sobre' %}">Sobre</a>
-        <a href="{% url 'meu_app:catalogo' %}">Catálogo</a>
-        <a href="{% url 'meu_app:contato' %}">Contato</a>
-        <a href="{% url 'meu_app:carrinho' %}">Carrinho</a>
-        {% if user.is_authenticated %}
-            <a href="#">Minha Conta</a>
-        {% else %}
-            <a href="{% url 'meu_app:cadastro_usuario' %}">Cadastro</a>
-        {% endif %}
-    </nav>
-    
-    {% block content %}
-    {% endblock %}
+    <header class="main-header">
+        <div class="logo-container">
+            <img src="{% static 'assets/logo.png' %}" alt="Duarte Ótica Logo" class="logo", width="50px">
+        </div>
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{% url 'sobre' %}" class="nav-link">Sobre</a></li>
+                <li class="nav-item"><a href="{% url 'catalogo' %}" class="nav-link">Catálogo</a></li>
+                <li class="nav-item"><a href="{% url 'produtos_lista' %}" class="nav-link">Produtos</a></li> 
+            </ul>
+        </nav>
+        <div class="logo-carrinho">
+            <a href="{% url 'exibir_carrinho' %}">
+                <img src="{% static 'assents/cart.png' %}" alt="Carrinho" class="carrinho">
+            </a>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- O conteúdo de cada página será inserido aqui -->
+        {% endblock %}
+    </main>
 </body>
-</html> 
+</html>
