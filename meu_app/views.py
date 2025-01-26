@@ -130,15 +130,20 @@ def remover_do_carrinho(request, item_id):
 
 
 @login_required
-def remover_tudo_do_carrinho(request):
+def remover_tudo_do_carrinho(request, item_id):
     usuario = request.user
     carrinho = Carrinho.objects.filter(usuario=usuario).first()
 
     if carrinho:
-        # Remove todos os itens do carrinho
-        carrinho.itens.all().delete()
+        # Busca o item específico no carrinho
+        item = carrinho.itens.filter(id=item_id).first()
+
+        if item:
+            # Remove todos os itens desse produto do carrinho
+            item.delete()
 
     return redirect('exibir_carrinho')
+
 
 @login_required
 def adicionar(request, produto_id):

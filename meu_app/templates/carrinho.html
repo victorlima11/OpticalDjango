@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Seu Carrinho - Duarte Ótica{% endblock %}
 
 {% block content %}
@@ -68,6 +70,23 @@
         .item-carrinho .alterar-quantidade {
             display: flex;
             gap: 10px;
+            align-items: center;
+        }
+
+        .alterar-quantidade button {
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .alterar-quantidade button:hover {
+            background-color: #e0e0e0;
         }
 
         .total {
@@ -101,18 +120,23 @@
         .adicionar-produto:hover {
             background-color: #0056b3;
         }
-
-        .remover-tudo {
-            background-color: #dc3545;
-            color: white;
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            border-radius: 5px;
-            text-align: center;
+        
+        .remover{
+            margin: 10px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
-        .remover-tudo:hover {
-            background-color: #c82333;
+        .remover img {
+            display: flex;
+            width: 40px; /* Ajuste o tamanho conforme necessário */
+            height: 40px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .remover img:hover {
+            transform: scale(1.1); /* Aumenta um pouco a imagem ao passar o mouse */
         }
 
         @media (max-width: 768px) {
@@ -137,14 +161,28 @@
         {% else %}
             <ul class="itens-carrinho">
                 {% for item in itens %}
-                    <li class="item-carrinho">
-                        <span class="produto">{{ item.produto.nome }} - R$ {{ item.produto.preco }} x {{ item.quantidade }} = R$ {{ item.subtotal }}</span>
-                        <div class="alterar-quantidade">
-                            <a class="remover" href="{% url 'remover_do_carrinho' item.id %}">Remover 1</a>
-                            <a class="remover" href="{% url 'adicionar_produto' item.id %}">Adicionar 1</a>
+                <li class="item-carrinho">
+                    <div class="produto">
+                        <span>{{ item.produto.nome }} - R$ {{ item.produto.preco }} x {{ item.quantidade }} = R$ {{ item.subtotal }}</span>
+                        <div class="imagem-produto">
+                            <img src="{{ item.produto.imagem_url }}" alt="{{ item.produto.nome }}" style="width: 150px; height: 150px; margin-inline: 20px;">
                         </div>
-                        <a class="remover" href="{% url 'remover_tudo_do_carrinho' %}">Remover Tudo</a>
-                    </li>
+                    </div>
+                    <div class="alterar-quantidade">
+                        <form action="{% url 'remover_do_carrinho' item.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">-</button>
+                        </form>
+                        <span>{{ item.quantidade }}</span>
+                        <form action="{% url 'adicionar_produto' item.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">+</button>
+                        </form>
+                    </div>
+                    <a class="remover" href="{% url 'remover_tudo_do_carrinho' item.id %}">
+                        <img src="{% static 'assets/trash-can_13104689.png' %}" alt="Remover Tudo" class="remover-imagem">
+                    </a>
+                </li>                
                 {% endfor %}
             </ul>
             <p class="total">Total: R$ {{ total }}</p>
