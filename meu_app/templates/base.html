@@ -19,8 +19,6 @@
                 <li class="nav-item"><a href="{% url 'produtos_lista' %}" class="nav-link">Produtos</a></li> 
             </ul>
         </nav>
-        
-        <!-- Área de login/sair e carrinho -->
         <div class="auth-carrinho">
             <div class="auth-link">
                 {% if user.is_authenticated %}
@@ -39,10 +37,8 @@
             </div>
         </div>
     </header>
-
     <main>
         {% block content %}
-        <!-- O conteúdo de cada página será inserido aqui -->
         {% endblock %}
     </main>
 </body>

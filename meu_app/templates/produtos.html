@@ -15,8 +15,6 @@
 </head>
 <body>
     <h1>Lista de Produtos</h1>
-
-    <!-- Formulário de Filtro -->
     <form id="filtro-form" class="filtro-form">
         <label for="filtro-tipo">Tipo:</label>
         <select id="filtro-tipo">
@@ -26,7 +24,6 @@
             <option value="Lente">Lente</option>
             <option value="Armação">Armação</option>
         </select>
-
         <label for="filtro-marca">Marca:</label>
         <select id="filtro-marca">
             <option value="">Todas</option>
@@ -35,7 +32,6 @@
             <option value="Varilux">Varilux</option>
             <option value="Zeiss">Zeiss</option>
         </select>
-
         <label for="filtro-genero">Gênero:</label>
         <select id="filtro-genero">
             <option value="">Todos</option>
@@ -44,8 +40,6 @@
             <option value="Unissex">Unissex</option>
         </select>
     </form>
-
-    <!-- Lista de Produtos -->
     <div class="produtos-container">
         {% for produto in produtos %}
             <a href="{% url 'produto_detalhes' produto.id %}" class="produto-card" 

@@ -86,10 +86,8 @@ def adicionar_ao_carrinho(request, produto_id):
     produto = get_object_or_404(Produto, id=produto_id)
     usuario = request.user
 
-    # Verifica se o usuário já possui um carrinho
     carrinho, criado = Carrinho.objects.get_or_create(usuario=usuario)
 
-    # Verifica se o item já está no carrinho
     item, criado = ItemCarrinho.objects.get_or_create(carrinho=carrinho, produto=produto)
     if not criado:
         item.quantidade += 1
@@ -113,19 +111,14 @@ def exibir_carrinho(request):
 
 @login_required
 def remover_do_carrinho(request, item_id):
-    # Obtém o item do carrinho
     item = get_object_or_404(ItemCarrinho, id=item_id)
 
-    # Verifica se a quantidade do item é maior que 1
     if item.quantidade > 1:
-        # Decrease a quantidade em 1
         item.quantidade -= 1
         item.save()
     else:
-        # Se a quantidade for 1, então remove o item
         item.delete()
 
-    # Após a remoção ou diminuição da quantidade, redireciona de volta para o carrinho
     return redirect('exibir_carrinho')
 
 
@@ -135,11 +128,9 @@ def remover_tudo_do_carrinho(request, item_id):
     carrinho = Carrinho.objects.filter(usuario=usuario).first()
 
     if carrinho:
-        # Busca o item específico no carrinho
         item = carrinho.itens.filter(id=item_id).first()
 
         if item:
-            # Remove todos os itens desse produto do carrinho
             item.delete()
 
     return redirect('exibir_carrinho')
@@ -147,14 +138,11 @@ def remover_tudo_do_carrinho(request, item_id):
 
 @login_required
 def adicionar(request, produto_id):
-    # Obtém o item do carrinho com base no item_id
     item = get_object_or_404(ItemCarrinho, id=produto_id)
 
-    # Aumenta a quantidade do item em 1
     item.quantidade += 1
     item.save()
 
-    # Após adicionar mais um item, redireciona de volta para o carrinho
     return redirect('exibir_carrinho')
 
 def lista_produtos(request):
@@ -162,7 +150,6 @@ def lista_produtos(request):
     marca = request.GET.get('marca', '')
     genero = request.GET.get('genero', '')
 
-    # Filtrar produtos com base nos parâmetros fornecidos
     produtos = Produto.objects.all()
     if tipo:
         produtos = produtos.filter(tipo=tipo)
