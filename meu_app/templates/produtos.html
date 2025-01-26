@@ -35,6 +35,54 @@
             </a>
         {% endfor %}
     </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="#">Quem Somos</a></li>
+                    <li><a href="#">Segurança</a></li>
+                    <li><a href="#">Pagamento</a></li>
+                    <li><a href="#">Política de garantia</a></li>
+                    <li><a href="#">Fale conosco</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Categorias</h3>
+                <ul>
+                    <li><a href="#">Marcas</a></li>
+                    <li><a href="#">Armações Solares</a></li>
+                    <li><a href="#">Armações Femininas</a></li>
+                    <li><a href="#">Armações Masculinas</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Serviços</h3>
+                <ul>
+                    <li><a href="#">Atendimento</a></li>
+                    <li><a href="#">Horários</a></li>
+                    <li>8:00 às 17:00</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Nossas redes</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/people/Duarteotica/61555908096734/?locale=uk_UA"><img src="{% static 'images/facebook.png' %}" alt="Facebook"></a>
+                    <a href="https://wa.me/5585999381801"><img src="{% static 'images/whatsapp_733641.png' %}" alt="WhatsApp"></a>
+                    <a href="#"><img src="{% static 'images/youtube_2111795.png' %}" alt="YouTube"></a>
+                    <a href="https://www.instagram.com/duarte.otica/"><img src="{% static 'images/instagram_739193.png' %}" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+        {% include 'whatsapp_button.html' %}
+        <div class="footer-bottom">
+            <img src="{% static 'assets/logo.png' %}" alt="Duarte Ótica" class="footer-logo">
+            <span>Todos os direitos Reservados a Duarte Otica &copy;</span>
+        </div>
+    </footer>
 </body>
 </html>
 {% endblock %}
