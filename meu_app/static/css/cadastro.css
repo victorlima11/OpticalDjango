@@ -31,8 +31,8 @@ body {
     margin-bottom: 20px;
     width: 100%;
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
+    justify-content: center;
+    align-items: center;
 }
 
 .logo img {
@@ -82,7 +82,7 @@ h2 {
 .grupo-botoes button {
     width: 100%;
     padding: 14px;
-    background-color: #e6b800; /* Cor dourada */
+    background-color: #e6b800;
     color: white;
     border: 2px solid #e6b800;
     border-radius: 4px;
@@ -119,7 +119,7 @@ h2 {
     text-decoration: underline;
 }
 
-/* Responsividade para dispositivos móveis */
+
 @media (max-width: 600px) {
     .container-cadastro {
         width: 90%;

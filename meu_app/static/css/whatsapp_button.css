@@ -19,7 +19,7 @@
 }
 
 .whatsapp-fixed-button i {
-    line-height: 60px; /* Altura do botão */
+    line-height: 60px;
 }
 .whatsapp-fixed-button:hover {
     transform: scale(1.1) rotate(5deg);

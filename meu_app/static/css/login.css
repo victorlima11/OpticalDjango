@@ -1,6 +1,4 @@
-/* login.css */
 
-/* Resetando margens e padding */
 * {
     margin: 0;
     padding: 0;
@@ -91,9 +89,9 @@ h2 {
 
 .logo img {
     width: 150px; 
-    height: 120px; /* A altura deve ser igual à largura para um formato circular perfeito */
+    height: 120px;
     border-radius: 50%; 
-    object-fit: cover; /* Garante que a imagem preencha o círculo sem distorcer */
+    object-fit: cover;
 }
 
 .logo {
@@ -101,11 +99,11 @@ h2 {
     margin-bottom: 20px;
     width: 100%;
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente, caso a logo tenha tamanhos diferentes */
+    justify-content: center;
+    align-items: center;
 }
 
-/* Responsividade para dispositivos móveis */
+
 @media (max-width: 600px) {
     .container-login {
         width: 90%;

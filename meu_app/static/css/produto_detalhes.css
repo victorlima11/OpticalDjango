@@ -1,4 +1,4 @@
-/* Estilo geral */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
@@ -7,9 +7,9 @@ body {
     color: #333;
 }
 
-/* Container principal */
+
 .container {
-    max-width: 900px; /* Reduzindo o tamanho do card */
+    max-width: 900px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -18,16 +18,16 @@ body {
     max-height: 500px;
 }
 
-/* Layout em duas colunas */
+
 .row {
     display: flex;
-    flex-direction: row; /* Informações lado a lado */
+    flex-direction: row;
     gap: 20px;
     align-items: center;
     justify-content: space-between;
 }
 
-/* Coluna da imagem */
+
 .col-md-6 img {
     max-width: 100%;
     height: auto;
@@ -36,28 +36,28 @@ body {
 }
 
 .col-md-6:first-child {
-    flex: 1 1 40%; /* Ajuste de largura para a coluna da imagem */
+    flex: 1 1 40%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Coluna das informações */
+
 .col-md-6:last-child {
-    flex: 1 1 60%; /* Ajuste de largura para a coluna das informações */
+    flex: 1 1 60%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-/* Título do produto */
+
 h1 {
     font-size: 1.3rem;
     color: #333;
     margin-bottom: 5px;
 }
 
-/* Preço em destaque */
+
 p.preco {
     font-size: 1.6rem;
     color: #d90000;
@@ -65,14 +65,14 @@ p.preco {
     margin: 0;
 }
 
-/* Texto adicional sobre preço */
+
 p.preco-detalhe {
     font-size: 0.9rem;
     color: #666;
     margin-top: 5px;
 }
 
-/* Botão de adicionar ao carrinho */
+
 a.btn-adicionar {
     text-decoration: none;
     color: #fff;
@@ -89,7 +89,7 @@ a.btn-adicionar:hover {
     background-color: #218838;
 }
 
-/* Consulta de CEP */
+
 .cep-consulta {
     display: flex;
     align-items: center;
@@ -101,7 +101,7 @@ a.btn-adicionar:hover {
     padding: 6px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 130px; /* Reduzindo a largura */
+    width: 130px;
 }
 
 .cep-consulta button {
