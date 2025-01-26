@@ -21,10 +21,22 @@
                           <li class="nav-item"><a href="{% url 'produtos_lista' %}" class="nav-link">Produtos</a></li> 
                       </ul>
         </nav>
-        <div class="logo-carrinho">
-            <a href="{% url 'exibir_carrinho' %}">
-                <img src="{% static 'assents/cart.png' %}" alt="carrinho" class="carrinho">
-            </a>
+        <div class="auth-carrinho">
+            <div class="auth-link">
+                {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="logout-btn">Sair</button>
+                </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="login-btn">Login</a>
+                {% endif %}
+            </div>
+            <div class="logo-carrinho">
+                <a href="{% url 'exibir_carrinho' %}">
+                    <img src="{% static 'assents/cart.png' %}" alt="Carrinho" class="carrinho">
+                </a>
+            </div>
         </div>
     </header>
 

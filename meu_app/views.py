@@ -81,6 +81,7 @@ def produto_detalhes(request, produto_id):
     produto = get_object_or_404(Produto, id=produto_id)
     return render(request, 'produto_detalhes.html', {'produto': produto})
 
+@login_required
 def adicionar_ao_carrinho(request, produto_id):
     produto = get_object_or_404(Produto, id=produto_id)
     usuario = request.user

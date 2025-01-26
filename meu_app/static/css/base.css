@@ -24,6 +24,7 @@ body {
     transition: background-color 0.3s ease;
 }
 
+/* Logo */
 .main-header .logo-container img {
     width: 80px;
     border-radius: 50%; /* Tornar a imagem redonda */
@@ -65,7 +66,24 @@ body {
     text-shadow: 0 0 2px #fff0a5; /* Sombra suave para destacar o texto */
 }
 
+/* Área de Login/Sair e Carrinho */
+.auth-carrinho {
+    display: flex; /* Alinha os itens horizontalmente */
+    align-items: center; /* Alinha os itens verticalmente */
+    gap: 15px; /* Espaço entre os itens */
+}
+
+/* Links de login e sair */
+.auth-link {
+    font-size: 16px;
+}
+
 /* Carrinho de compras */
+.logo-carrinho {
+    position: relative;
+}
+
+
 .carrinho {
     width: 50px;
     height: auto;
@@ -111,4 +129,26 @@ body {
     .carrinho {
         width: 40px;
     }
+}
+
+.logout-btn {
+    background-color: #ff4d4d; /* Vermelho suave */
+    color: #ffffff; /* Texto branco */
+    border: none; /* Sem borda */
+    padding: 8px 16px; /* Espaçamento interno */
+    border-radius: 6px; /* Bordas arredondadas */
+    font-size: 14px; /* Tamanho do texto */
+    font-weight: bold; /* Texto em negrito */
+    cursor: pointer; /* Muda o cursor ao passar */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Efeito ao passar o mouse */
+}
+
+.logout-btn:hover {
+    background-color: #e60000; /* Vermelho mais intenso ao passar o mouse */
+    transform: scale(1.05); /* Leve aumento ao passar o mouse */
+}
+
+.logout-btn:active {
+    transform: scale(0.95); /* Reduz o tamanho ao clicar */
+    background-color: #cc0000; /* Vermelho ainda mais escuro ao clicar */
 }

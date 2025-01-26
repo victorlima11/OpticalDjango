@@ -756,3 +756,74 @@ footer {
     margin-right: 10px;
     vertical-align: middle;
 }
+
+.auth-carrinho {
+    display: flex; /* Alinha os itens horizontalmente */
+    align-items: center; /* Alinha os itens verticalmente */
+    gap: 15px; /* Espaço entre os itens */
+}
+
+/* Links de login e sair */
+.auth-link {
+    font-size: 20px;
+}
+
+/* Carrinho de compras */
+.logo-carrinho {
+    position: relative;
+}
+
+.carrinho {
+    width: 50px;
+    height: auto;
+    transition: transform 0.3s ease; /* Efeito de transformação suave */
+}
+
+.carrinho:hover {
+    transform: scale(1.1); /* Aumenta o ícone do carrinho ao passar o mouse */
+}
+
+.logout-btn {
+    background-color: #ff4d4d; /* Vermelho suave */
+    color: #ffffff; /* Texto branco */
+    border: none; /* Sem borda */
+    padding: 8px 16px; /* Espaçamento interno */
+    border-radius: 6px; /* Bordas arredondadas */
+    font-size: 14px; /* Tamanho do texto */
+    font-weight: bold; /* Texto em negrito */
+    cursor: pointer; /* Muda o cursor ao passar */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Efeito ao passar o mouse */
+}
+
+.logout-btn:hover {
+    background-color: #e60000; /* Vermelho mais intenso ao passar o mouse */
+    transform: scale(1.05); /* Leve aumento ao passar o mouse */
+}
+
+.logout-btn:active {
+    transform: scale(0.95); /* Reduz o tamanho ao clicar */
+    background-color: #cc0000; /* Vermelho ainda mais escuro ao clicar */
+}
+
+.login-btn {
+    background-color: #4CAF50; /* Verde suave */
+    color: #ffffff; /* Texto branco */
+    text-decoration: none; /* Remove o sublinhado */
+    padding: 8px 16px; /* Espaçamento interno */
+    border-radius: 6px; /* Bordas arredondadas */
+    font-size: 14px; /* Tamanho do texto */
+    font-weight: bold; /* Texto em negrito */
+    display: inline-block; /* Permite aplicar espaçamento interno */
+    cursor: pointer; /* Muda o cursor ao passar */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Efeito ao passar o mouse */
+}
+
+.login-btn:hover {
+    background-color: #3e8e41; /* Verde mais escuro ao passar o mouse */
+    transform: scale(1.05); /* Leve aumento ao passar o mouse */
+}
+
+.login-btn:active {
+    transform: scale(0.95); /* Reduz o tamanho ao clicar */
+    background-color: #2e7031; /* Verde ainda mais escuro ao clicar */
+}
