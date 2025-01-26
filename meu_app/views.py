@@ -150,3 +150,19 @@ def adicionar(request, produto_id):
 
     # Após adicionar mais um item, redireciona de volta para o carrinho
     return redirect('exibir_carrinho')
+
+def lista_produtos(request):
+    tipo = request.GET.get('tipo', '')
+    marca = request.GET.get('marca', '')
+    genero = request.GET.get('genero', '')
+
+    # Filtrar produtos com base nos parâmetros fornecidos
+    produtos = Produto.objects.all()
+    if tipo:
+        produtos = produtos.filter(tipo=tipo)
+    if marca:
+        produtos = produtos.filter(marca=marca)
+    if genero:
+        produtos = produtos.filter(genero=genero)
+
+    return render(request, 'produtos.html', {'produtos': produtos})

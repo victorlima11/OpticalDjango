@@ -11,19 +11,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Produtos</title>
     <link rel="stylesheet" href="{% static 'css/produtos.css' %}">
-    <style>
-        a.produto-card {
-            text-decoration: none; /* Remove sublinhado do link */
-            color: inherit; /* Herda a cor do texto do pai */
-            display: block; /* Permite que o card ocupe o espaço total */
-        }
-    </style>
+    <script src="{% static 'js/produtos.js' %}"></script>
 </head>
 <body>
     <h1>Lista de Produtos</h1>
+
+    <!-- Formulário de Filtro -->
+    <form id="filtro-form" class="filtro-form">
+        <label for="filtro-tipo">Tipo:</label>
+        <select id="filtro-tipo">
+            <option value="">Todos</option>
+            <option value="solar">Solar</option>
+            <option value="grau">Grau</option>
+        </select>
+
+        <label for="filtro-marca">Marca:</label>
+        <select id="filtro-marca">
+            <option value="">Todas</option>
+            <option value="Ray-Ban">Ray-Ban</option>
+            <option value="Oakley">Oakley</option>
+        </select>
+
+        <label for="filtro-genero">Gênero:</label>
+        <select id="filtro-genero">
+            <option value="">Todos</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+        </select>
+    </form>
+
+    <!-- Lista de Produtos -->
     <div class="produtos-container">
         {% for produto in produtos %}
-            <a href="{% url 'produto_detalhes' produto.id %}" class="produto-card">
+            <a href="{% url 'produto_detalhes' produto.id %}" class="produto-card" 
+               data-tipo="{{ produto.tipo }}" 
+               data-marca="{{ produto.marca }}" 
+               data-genero="{{ produto.genero }}">
                 {% if produto.imagem_url %}
                     <img class="produto-imagem" src="{{ produto.imagem_url }}" alt="{{ produto.nome }}">
                 {% endif %}
@@ -35,54 +58,6 @@
             </a>
         {% endfor %}
     </div>
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Institucional</h3>
-                <ul>
-                    <li><a href="#">Quem Somos</a></li>
-                    <li><a href="#">Segurança</a></li>
-                    <li><a href="#">Pagamento</a></li>
-                    <li><a href="#">Política de garantia</a></li>
-                    <li><a href="#">Fale conosco</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Categorias</h3>
-                <ul>
-                    <li><a href="#">Marcas</a></li>
-                    <li><a href="#">Armações Solares</a></li>
-                    <li><a href="#">Armações Femininas</a></li>
-                    <li><a href="#">Armações Masculinas</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Serviços</h3>
-                <ul>
-                    <li><a href="#">Atendimento</a></li>
-                    <li><a href="#">Horários</a></li>
-                    <li>8:00 às 17:00</li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Nossas redes</h3>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/people/Duarteotica/61555908096734/?locale=uk_UA"><img src="{% static 'images/facebook.png' %}" alt="Facebook"></a>
-                    <a href="https://wa.me/5585999381801"><img src="{% static 'images/whatsapp_733641.png' %}" alt="WhatsApp"></a>
-                    <a href="#"><img src="{% static 'images/youtube_2111795.png' %}" alt="YouTube"></a>
-                    <a href="https://www.instagram.com/duarte.otica/"><img src="{% static 'images/instagram_739193.png' %}" alt="Instagram"></a>
-                </div>
-            </div>
-        </div>
-        {% include 'whatsapp_button.html' %}
-        <div class="footer-bottom">
-            <img src="{% static 'assets/logo.png' %}" alt="Duarte Ótica" class="footer-logo">
-            <span>Todos os direitos Reservados a Duarte Otica &copy;</span>
-        </div>
-    </footer>
 </body>
 </html>
 {% endblock %}
