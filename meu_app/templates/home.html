@@ -1,0 +1,257 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duarte Ótica</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-container">
+            <img src="{% static 'assets/logo.png' %}" alt="Duarte Ótica Logo" class="logo">
+        </div>
+        <nav class="navbar">
+            <ul class="nav-list">
+                          <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                          <li class="nav-item"><a href="{% url 'sobre' %}" class="nav-link">Sobre</a></li>
+                          <li class="nav-item"><a href="{% url 'produtos_lista' %}" class="nav-link">Produtos</a></li> 
+                      </ul>
+        </nav>
+        <div class="auth-carrinho">
+            <div class="auth-link">
+                {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="logout-btn">Sair</button>
+                </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="login-btn">Login</a>
+                {% endif %}
+            </div>
+            <div class="logo-carrinho">
+                <a href="{% url 'exibir_carrinho' %}">
+                    <img src="{% static 'assets/cart.png' %}" alt="Carrinho" class="carrinho">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="banner">
+        <div class="banner-content">
+            <img src="{% static 'assets/Duarteotica.com.png' %}" alt="Banner de verão">
+            <a href="{% url 'produtos_lista' %}">
+                <button class="btn-banner">Compre agora</button>
+            </a>
+        </div>
+    </div>
+    
+    <div class="icons">
+        <div class="icon-container">
+            <img src="{% static 'assents//icon1.png' %}" alt="Ícone 1" class="icon">
+            <p class="icon-text">Marcas Exclusivas e <br> as Melhores Grifes</p>
+        </div>
+        <div class="icon-container">
+            <img src="{% static 'assents//icon2.png' %}" alt="Ícone 2" class="icon">
+            <p class="icon-text">Entrega Gratuita Para Fortaleza</p>
+        </div>
+        <div class="icon-container">
+            <img src="{% static 'assents//icon3.png' %}" alt="Ícone 3" class="icon">
+            <p class="icon-text">Entrega de 1 á 4 dias</p>
+        </div>
+    </div>
+    
+    <div class="message-section">
+        <div class="message-item">
+            <div class="image-box">
+                <img src="{% static 'assents//image-box.png' %}" alt="Ícone Ajuda" class="message-icon">
+            </div>
+            <div class="text-box">
+                <h1>Está com dificuldade para enxergar bem ou com dor de cabeça?</h1>
+                <h2>Óculos desgastados ou ultrapassados? <br> Temos as últimas tendências.</h2>
+                <h2>Precisa de óculos mais confortáveis?<br> Oferecemos lentes leves e personalizadas.</h2>
+                <h2>Preocupado com o preço? <br> Temos as melhores condições e parcelamentos.</h2>
+                <a href="https://wa.me/5585999381801" class="whatsapp-button">Conversar no WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="services-icons">
+        <div class="service-icon">
+            <img src=" {% static 'assents/1.png' %}" alt="service-icon" class="service">
+            <p class="service-text">Oculos de Grau</p>
+        </div>
+
+        <div class="service-icon">
+            <img src="{% static 'assents/4.png' %}" alt="service-icon" class="service">
+            <p class="service-text">Oculos Solar</p>
+        </div>
+
+        <div class="service-icon">
+            <img src=" {% static 'assents/2.png' %}" alt="service-icon" class="service">
+            <p class="service-text">Lentes de Contato</p>
+        </div>
+
+        <div class="service-icon">
+            <img src=" {% static 'assents/3.png' %}" alt="service-icon" class="service">
+            <p class="service-text">Oculos Infantil </p>
+        </div>
+    </div>
+
+    <div class="appointment-frame">
+        <div class="appointment-image">
+            <img src="{% static 'assents/9.png' %}" alt="Exame oftalmológico">
+        </div>
+        <div class="appointment-info">
+            <h2>Agende seu exame oftalmológico</h2>
+            <p>
+                Verifique sua saúde ocular com nossos exames oftalmológicos. 
+                Garantimos um atendimento especializado e equipamentos modernos 
+                para o cuidado dos seus olhos.
+            </p>
+            <p>
+                <strong>Horários disponíveis:</strong> Segunda a sexta, das 8h às 18h.
+            </p>
+            <p>
+                <strong>Contato:</strong> Ligue para (XX) XXXX-XXXX ou envie uma mensagem no WhatsApp.
+            </p>
+            <button class="btn-schedule">Agendar Exame</button>
+        </div>
+    </div>
+
+    <div class="icons-marcas">
+        <div class="marca-header">
+            <h1>Confira nossas Marcas</h1>
+        </div>
+        <div class="marca-icons">
+            <div class="marca-icon">
+                <img src="{% static 'assents/marca1.png' %}" alt="Marca 1">
+                <p>Marca 1</p>
+            </div>
+            <div class="marca-icon">
+                <img src="{% static 'assents/marca2.png' %}" alt="Marca 2">
+                <p>Marca 2</p>
+            </div>
+            <div class="marca-icon">
+                <img src="{% static 'assents/marca3.png' %}" alt="Marca 3">
+                <p>Marca 3</p>
+            </div>
+            <div class="marca-icon">
+                <img src="{% static 'assents/marca4.png' %}" alt="Marca 4">
+                <p>Marca 4</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="text-box">
+            <h1>Armação para Óculos de Grau Unissex</h1>
+            <p>Combine as suas lentes com suas armações favoritas Ótica Duarte Ótica</p>
+            <a href="#" class="button">Ver Armações</a>
+        </div>
+        <div class="image-box">
+            <img src="{% static 'assents/armacao.png' %}" alt="Imagem decorativa">
+        </div>
+    </div>
+
+    <div class="video-wrapper">
+        <video autoplay muted loop class="background-video">
+            <source src="{% static 'assents/video.mp4' %}" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
+        <div class="content">
+            <h1>Garanta o seu!</h1>
+            <p>Óculos para todos os gostos. Vem ver!</p>
+        </div>
+    </div>
+    <div class="women-men">
+        <div class="option">
+            <img src="{% static 'assents/feminino.png' %}" alt="Masculino">
+            <button>Feminino</button>
+        </div>
+        <div class="option">
+            <img src="{% static 'assents/masculino.png' %}" alt="Feminino">
+            <button>Masculino</button>
+        </div>
+    </div>
+    <div class="payment-methods">
+        <h2>Formas de Pagamento</h2>
+        <div class="payment-options">
+            <div class="payment-option">
+                <img src="{% static 'images/credit-card.png' %}" alt="Cartão de Crédito">
+                <h3>Cartão de Crédito</h3>
+                <p>Aceitamos Visa, MasterCard, American Express e Discover.</p>
+            </div>
+            <div class="payment-option">
+                <img src="{% static 'images/pix.png' %}" alt="Pix">
+                <h3>Pix</h3>
+                <p>Pagamento instantâneo, rápido e seguro.</p>
+            </div>
+            <div class="payment-option">
+                <img src="{% static 'images/boleto.png' %}" alt="Boleto Bancário">
+                <h3>Boleto Bancário</h3>
+                <p>Pague no banco ou pela internet até a data de vencimento.</p>
+            </div>
+            <div class="payment-option">
+                <img src="{% static 'images/cash-on-delivery.png' %}" alt="Pagamento na Entrega">
+                <h3>Pagamento na Entrega</h3>
+                <p>Pague em dinheiro ou cartão quando o produto chegar.</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="#">Quem Somos</a></li>
+                    <li><a href="#">Segurança</a></li>
+                    <li><a href="#">Pagamento</a></li>
+                    <li><a href="#">Política de garantia</a></li>
+                    <li><a href="#">Fale conosco</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Categorias</h3>
+                <ul>
+                    <li><a href="#">Marcas</a></li>
+                    <li><a href="#">Armações Solares</a></li>
+                    <li><a href="#">Armações Femininas</a></li>
+                    <li><a href="#">Armações Masculinas</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Serviços</h3>
+                <ul>
+                    <li><a href="#">Atendimento</a></li>
+                    <li><a href="#">Horários</a></li>
+                    <li>8:00 às 17:00</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Nossas redes</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/people/Duarteotica/61555908096734/?locale=uk_UA"><img src="{% static 'images/facebook.png' %}" alt="Facebook"></a>
+                    <a href="https://wa.me/5585999381801"><img src="{% static 'images/whatsapp_733641.png' %}" alt="WhatsApp"></a>
+                    <a href="#"><img src="{% static 'images/youtube_2111795.png' %}" alt="YouTube"></a>
+                    <a href="https://www.instagram.com/duarte.otica/"><img src="{% static 'images/instagram_739193.png' %}" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+        {% include 'whatsapp_button.html' %}
+        <div class="footer-bottom">
+            <img src="{% static 'assets/logo.png' %}" alt="Duarte Ótica" class="footer-logo">
+            <span>Todos os direitos Reservados a Duarte Otica &copy;</span>
+        </div>
+    </footer>
+</body>
+</html>
+</body>
+</html>
+    

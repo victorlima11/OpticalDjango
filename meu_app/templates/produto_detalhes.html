@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Produtos - Duarte Ótica{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ produto.nome }}</title>
+    <link rel="stylesheet" href="{% static 'css/produto_detalhes.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                {% if produto.imagem_url %}
+                    <img src="{{ produto.imagem_url }}" alt="{{ produto.nome }}">
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <h1>{{ produto.nome }}</h1>
+                <p class="preco">R$ {{ produto.preco }}</p>
+                <p class="preco-detalhe">à vista no pix ou no cartão</p>
+                {% if produto.descricao %}
+                    <p><strong>Descrição:</strong> {{ produto.descricao }}</p>
+                {% endif %}
+                {% if produto.marca %}
+                    <p><strong>Marca:</strong> {{ produto.marca }}</p>
+                {% endif %}
+                {% if produto.genero %}
+                    <p><strong>Gênero:</strong> {{ produto.genero }}</p>
+                {% endif %}
+                {% if produto.tipo %}
+                    <p><strong>Tipo:</strong> {{ produto.tipo }}</p>
+                {% endif %}
+                <a href="{% url 'adicionar_ao_carrinho' produto.id %}" class="btn-adicionar">Adicionar ao carrinho</a>
+                <a href="{% url 'produtos_lista' %}" class="btn-adicionar">Voltar ao catálogo</a>
+                <div class="cep-consulta">
+                    <input type="text" placeholder="00000-000" aria-label="CEP">
+                    <button>Consultar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}
