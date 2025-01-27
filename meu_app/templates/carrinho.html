@@ -171,8 +171,7 @@
         {% for item in itens %}
         <li class="item-carrinho">
             <div class="produto">
-                <span>{{ item.produto.nome }} - R$ {{ item.produto.preco }} x {{ item.quantidade }} = R$ {{
-                    item.subtotal }}</span>
+                <span>{{ item.produto.nome }} - R$ {{ item.produto.preco }} x {{ item.quantidade }} = R$ {{ total }}</span>
                 <div class="imagem-produto">
                     <img src="{{ item.produto.imagem_url }}" alt="{{ item.produto.nome }}"
                         style="width: 150px; height: 150px; margin-inline: 20px;">
