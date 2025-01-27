@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Duarte Ótica{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-container">
+            <img src="{% static 'assets/logo.png' %}" alt="Duarte Ótica Logo" class="logo" width="80px">
+        </div>
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{% url 'sobre' %}" class="nav-link">Sobre</a></li>
+                <li class="nav-item"><a href="{% url 'produtos_lista' %}" class="nav-link">Produtos</a></li> 
+            </ul>
+        </nav>
+        <div class="auth-carrinho">
+            <div class="auth-link">
+                {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="logout-btn">Sair</button>
+                </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="nav-link">Login</a>
+                {% endif %}
+            </div>
+            <div class="logo-carrinho">
+                <a href="{% url 'exibir_carrinho' %}">
+                    <img src="{% static 'assets/cart.png' %}" alt="Carrinho" class="carrinho">
+                </a>
+            </div>
+        </div>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

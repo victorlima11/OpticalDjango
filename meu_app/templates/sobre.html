@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ótica Duarte - Estilo e Conforto para sua Visão</title>
+    <link rel="stylesheet" href="{% static 'css/sobre.css' %}">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-container">
+            <img src="{% static 'assets/logo.png' %}" alt="Duarte Ótica Logo" class="logo", width="50px">
+        </div>
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{% url 'sobre' %}" class="nav-link">Sobre</a></li>
+                <li class="nav-item"><a href="{% url 'produtos_lista' %}" class="nav-link">Produtos</a></li> 
+            </ul>
+        </nav>
+        <div class="auth-carrinho">
+            <div class="auth-link">
+                {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" met
+                hod="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="logout-btn">Sair</button>
+                </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="login-btn">Login</a>
+                {% endif %}
+            </div>
+            <div class="logo-carrinho">
+                <a href="{% url 'exibir_carrinho' %}">
+                    <img src="{% static 'assents/cart.png' %}" alt="Carrinho" class="carrinho">
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="content">
+            <div class="left-side">
+                <img src="{% static 'assets/logo.png' %}" alt="Duarte Ótica Logo" class="logo">
+                <h1 class="title">ESTILO E<br>CONFORTO PARA<br>A SUA VISÃO!</h1>
+            </div>
+            <div class="right-side">
+                <p class="description">
+                    A Ótica Duarte oferece um serviço online ágil e eficiente, com uma ampla variedade de óculos de grau e de sol de marcas renomadas. Com um processo de compra fácil e seguro, entrega rápida e atendimento ao cliente atencioso, garante uma experiência de compra conveniente e satisfatória para seus clientes.
+                </p>
+                <div class="contact">
+                    <h2 class="contact-title">FALA COM A GENTE!</h2>
+                    <div class="contact-info">
+                        <p>+55 (85) 9933-81801</p>
+                        <p>duare7444@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="#">Quem Somos</a></li>
+                    <li><a href="#">Segurança</a></li>
+                    <li><a href="#">Pagamento</a></li>
+                    <li><a href="#">Política de garantia</a></li>
+                    <li><a href="#">Fale conosco</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Categorias</h3>
+                <ul>
+                    <li><a href="#">Marcas</a></li>
+                    <li><a href="#">Armações Solares</a></li>
+                    <li><a href="#">Armações Femininas</a></li>
+                    <li><a href="#">Armações Masculinas</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Serviços</h3>
+                <ul>
+                    <li><a href="#">Atendimento</a></li>
+                    <li><a href="#">Horários</a></li>
+                    <li>8:00 às 17:00</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Nossas redes</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/people/Duarteotica/61555908096734/?locale=uk_UA"><img src="{% static 'assets/facebook.png' %}" alt="Facebook"></a>
+                    <a href="https://wa.me/5585999381801"><img src="{% static 'assets/whatsapp_733641.png' %}" alt="WhatsApp"></a>
+                    <a href="#"><img src="{% static 'assets/youtube_2111795.png' %}" alt="YouTube"></a>
+                    <a href="https://www.instagram.com/duarte.otica/"><img src="{% static 'assets/instagram_739193.png' %}" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+        {% include 'whatsapp_button.html' %}
+        <div class="footer-bottom">
+            <img src="{% static 'assets/logo.png' %}" alt="Duarte Ótica" class="footer-logo">
+            <span>Todos os direitos Reservados a Duarte Otica &copy;</span>
+        </div>
+    </footer>
+</body>
+</html>

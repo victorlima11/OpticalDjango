@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Produtos - Duarte Ótica{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+    <link rel="stylesheet" href="{% static 'css/produtos.css' %}">
+    <script src="{% static 'js/produtos.js' %}"></script>
+</head>
+<body>
+    <h1>Lista de Produtos</h1>
+    <form id="filtro-form" class="filtro-form">
+        <label for="filtro-tipo">Tipo:</label>
+        <select id="filtro-tipo">
+            <option value="">Todos</option>
+            <option value="solar">Solar</option>
+            <option value="grau">Grau</option>
+            <option value="Lente">Lente</option>
+            <option value="Armação">Armação</option>
+        </select>
+        <label for="filtro-marca">Marca:</label>
+        <select id="filtro-marca">
+            <option value="">Todas</option>
+            <option value="Crizal">Crizal</option>
+            <option value="Essilor">Essilor</option>
+            <option value="Varilux">Varilux</option>
+            <option value="Zeiss">Zeiss</option>
+        </select>
+        <label for="filtro-genero">Gênero:</label>
+        <select id="filtro-genero">
+            <option value="">Todos</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+            <option value="Unissex">Unissex</option>
+        </select>
+    </form>
+    <div class="produtos-container">
+        {% for produto in produtos %}
+            <a href="{% url 'produto_detalhes' produto.id %}" class="produto-card" 
+               data-tipo="{{ produto.tipo }}" 
+               data-marca="{{ produto.marca }}" 
+               data-genero="{{ produto.genero }}">
+                {% if produto.imagem_url %}
+                    <img class="produto-imagem" src="{{ produto.imagem_url }}" alt="{{ produto.nome }}">
+                {% endif %}
+                <h2 class="produto-nome">{{ produto.nome }}</h2>
+                <p class="produto-marca">Marca: {{ produto.marca }}</p>
+                <p class="produto-tipo">Tipo: {{ produto.tipo }}</p>
+                <p class="produto-genero">Gênero: {{ produto.genero }}</p>
+                <button class="produto-preco">R$ {{ produto.preco }}</button>
+            </a>
+        {% endfor %}
+    </div>
+</body>
+</html>
+{% endblock %}

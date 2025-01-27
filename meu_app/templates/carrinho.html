@@ -1,0 +1,300 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Seu Carrinho - Duarte Ótica{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+        color: #333;
+    }
+
+    header {
+        background-color: #007bff;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    h1 {
+        margin: 0;
+    }
+
+    .carrinho-container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 2rem auto;
+    }
+
+    .mensagem {
+        background-color: #d4edda;
+        padding: 1rem;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .itens-carrinho {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .item-carrinho {
+        display: flex;
+        justify-content: space-between;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+    }
+
+    .item-carrinho .produto {
+        flex-grow: 1;
+    }
+
+    .item-carrinho a.remover {
+        color: #dc3545;
+        text-decoration: none;
+    }
+
+    .item-carrinho a.remover:hover {
+        text-decoration: underline;
+    }
+
+    .item-carrinho .alterar-quantidade {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .alterar-quantidade button {
+        background-color: #f0f0f0;
+        color: #333;
+        border: 1px solid #ccc;
+        padding: 0.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .alterar-quantidade button:hover {
+        background-color: #e0e0e0;
+    }
+
+    .total {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-top: 1rem;
+    }
+
+    .finalizar,
+    .adicionar-produto {
+        display: inline-block;
+        background-color: #28a745;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        text-decoration: none;
+        border-radius: 5px;
+        text-align: center;
+        margin-top: 1.5rem;
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .finalizar:hover,
+    .adicionar-produto:hover {
+        background-color: #218838;
+    }
+
+    .adicionar-produto {
+        background-color: #007bff;
+    }
+
+    .adicionar-produto:hover {
+        background-color: #0056b3;
+    }
+
+    .remover {
+        margin: 10px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .remover img {
+        display: flex;
+        width: 40px;
+        /* Ajuste o tamanho conforme necessário */
+        height: 40px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    .remover img:hover {
+        transform: scale(1.1);
+        /* Aumenta um pouco a imagem ao passar o mouse */
+    }
+
+    @media (max-width: 768px) {
+        .item-carrinho {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .item-carrinho .produto {
+            margin-bottom: 1rem;
+        }
+
+        .finalizar,
+        .adicionar-produto,
+        .remover-tudo {
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="carrinho-container">
+    {% if mensagem %}
+    <p class="mensagem">{{ mensagem }}</p>
+    {% else %}
+    <ul class="itens-carrinho">
+        {% for item in itens %}
+        <li class="item-carrinho">
+            <div class="produto">
+                <span>{{ item.produto.nome }} - R$ {{ item.produto.preco }} x {{ item.quantidade }} = R$ {{
+                    item.subtotal }}</span>
+                <div class="imagem-produto">
+                    <img src="{{ item.produto.imagem_url }}" alt="{{ item.produto.nome }}"
+                        style="width: 150px; height: 150px; margin-inline: 20px;">
+                </div>
+            </div>
+            <div class="alterar-quantidade">
+                <form action="{% url 'remover_do_carrinho' item.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">-</button>
+                </form>
+                <span>{{ item.quantidade }}</span>
+                <form action="{% url 'adicionar_produto' item.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">+</button>
+                </form>
+            </div>
+            <a class="remover" href="{% url 'remover_tudo_do_carrinho' item.id %}">
+                <img src="{% static 'assets/trash-can_13104689.png' %}" alt="Remover Tudo" class="remover-imagem">
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    <p class="total">Total: R$ {{ total }}</p>
+    <a class="finalizar" href="javascript:abrirPopup()">Finalizar Compra</a>
+    <a class="adicionar-produto" href="{% url 'produtos_lista' %}">Continuar Comprando</a>
+    {% endif %}
+</div>
+
+<div id="checkout-popup" class="popup-container hidden">
+    <div class="popup">
+        <h2>Finalizar Compra</h2>
+        <p>Deseja realmente finalizar a compra?</p>
+        <p class="total-popup">Total: R$ {{ total }}</p>
+        <div class="popup-actions">
+            <a class="confirmar" href="/checkout/">Sim, finalizar</a>
+            <button class="cancelar" onclick="fecharPopup()">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .popup-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .popup {
+        background: white;
+        border-radius: 10px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 90%;
+    }
+
+    .popup h2 {
+        margin: 0 0 1rem;
+        font-size: 1.5rem;
+    }
+
+    .popup p {
+        margin: 0.5rem 0;
+    }
+
+    .popup-actions {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: space-around;
+        gap: 10px;
+    }
+
+    .popup .confirmar {
+        background-color: #28a745;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .popup .confirmar:hover {
+        background-color: #218838;
+    }
+
+    .popup .cancelar {
+        background-color: #dc3545;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .popup .cancelar:hover {
+        background-color: #c82333;
+    }
+</style>
+
+<script>
+    function abrirPopup() {
+        document.getElementById("checkout-popup").classList.remove("hidden");
+    }
+
+    function fecharPopup() {
+        document.getElementById("checkout-popup").classList.add("hidden");
+    }
+</script>
+
+
+{% endblock %}
