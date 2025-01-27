@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedido Realizado</title>
+  <link rel="stylesheet" href="{% static 'css/sucesso.css' %}">
+</head>
+<body>
+  <div class="success-container">
+    <h1>Pedido Realizado com Sucesso!</h1>
+    <p>Obrigado, <strong>{{ nome }}</strong>, por sua compra!</p>
+    <p>Método de pagamento escolhido: <strong>{{ metodo_pagamento }}</strong></p>
+    <a href="{% url 'home' %}" class="button">Voltar para a Página Inicial</a>
+  </div>
+</body>
+</html>

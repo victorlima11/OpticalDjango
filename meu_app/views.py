@@ -5,6 +5,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.utils.timezone import now
+from django.views import View
+from django.http import JsonResponse
 
 def home(request):
     return render(request, 'home.html')
@@ -159,3 +162,78 @@ def lista_produtos(request):
         produtos = produtos.filter(genero=genero)
 
     return render(request, 'produtos.html', {'produtos': produtos})
+
+@login_required
+def checkout(request):
+    if request.method == "POST":
+        nome = request.POST.get("nome")
+        email = request.POST.get("email")
+        endereco = request.POST.get("endereco")
+        cidade = request.POST.get("cidade")
+        metodo_pagamento = request.POST.get("metodo_pagamento")
+
+        return HttpResponse(f"""
+            <h1>Dados Recebidos</h1>
+            <p><strong>Nome:</strong> {nome}</p>
+            <p><strong>Email:</strong> {email}</p>
+            <p><strong>Endereço:</strong> {endereco}</p>
+            <p><strong>Cidade:</strong> {cidade}</p>
+            <p><strong>Método de Pagamento:</strong> {metodo_pagamento}</p>
+            <a href="/checkout/">Voltar ao checkout</a>
+        """)
+
+    return render(request, "checkout.html")
+
+@login_required
+def finalizar_pedido(request):
+    if request.method == 'POST':
+        # Recuperar dados do formulário
+        nome = request.POST.get('nome')
+        email = request.POST.get('email')
+        telefone = request.POST.get('telefone')
+        endereco = request.POST.get('endereco')
+        cidade = request.POST.get('cidade')
+        cep = request.POST.get('cep')
+        metodo_pagamento = request.POST.get('pagamento')
+
+        # Recuperar o carrinho do usuário
+        try:
+            carrinho = get_object_or_404(Carrinho, usuario=request.user)
+        except Carrinho.DoesNotExist:
+            return render(request, 'erro.html', {'mensagem': 'Carrinho não encontrado.'})
+
+        # Recuperar itens do carrinho
+        itens_carrinho = carrinho.itens.all()
+
+        if not itens_carrinho.exists():
+            return render(request, 'erro.html', {'mensagem': 'Seu carrinho está vazio.'})
+
+        # Calcular o total do pedido
+        total = sum(item.subtotal for item in itens_carrinho)
+
+        # Criar o pedido
+        pedido = Pedido.objects.create(
+            usuario=request.user,
+            total=total,
+        )
+
+        # Associar os itens do carrinho ao pedido
+        for item in itens_carrinho:
+            pedido.itens.add(item)
+
+        # Salvar o pedido (redundante, mas seguro)
+        pedido.save()
+
+        # Limpar o carrinho após finalizar o pedido
+        carrinho.itens.all().delete()
+
+        # Redirecionar para a página de sucesso
+        return render(request, 'sucesso.html', {
+            'nome': nome,
+            'metodo_pagamento': metodo_pagamento,
+            'total': total,
+            'pedido': pedido,
+        })
+    else:
+        # Redirecionar para o checkout caso o método não seja POST
+        return redirect('checkout')

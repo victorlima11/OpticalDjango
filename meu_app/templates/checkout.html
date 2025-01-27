@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+</head>
+<body>
+  <div class="checkout-container">
+    <h1>Checkout</h1>
+    <form action="/finalizar-pedido/" method="POST">
+    {% csrf_token %}
+      <div class="form-section">
+        <h2>Informações Pessoais</h2>
+        <label for="nome">Nome Completo</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+
+        <label for="telefone">Telefone</label>
+        <input type="tel" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" required>
+      </div>
+
+      <!-- Endereço -->
+      <div class="form-section">
+        <h2>Endereço de Entrega</h2>
+        <label for="endereco">Endereço</label>
+        <input type="text" id="endereco" name="endereco" placeholder="Rua, número e complemento" required>
+
+        <label for="cidade">Cidade</label>
+        <input type="text" id="cidade" name="cidade" placeholder="Digite sua cidade" required>
+
+        <label for="cep">CEP</label>
+        <input type="text" id="cep" name="cep" placeholder="XXXXX-XXX" required>
+      </div>
+
+      <!-- Pagamento -->
+      <div class="form-section">
+        <h2>Método de Pagamento</h2>
+        <label>
+          <input type="radio" name="pagamento" value="cartao" required>
+          Cartão de Crédito
+        </label>
+        <label>
+          <input type="radio" name="pagamento" value="boleto">
+          Boleto Bancário
+        </label>
+        <label>
+          <input type="radio" name="pagamento" value="pix">
+          PIX
+        </label>
+      </div>
+
+      <button type="submit" class="submit-button">Finalizar Pedido</button>
+    </form>
+  </div>
+</body>
+</html>
