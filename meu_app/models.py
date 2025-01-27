@@ -38,9 +38,8 @@ class ItemCarrinho(models.Model):
 
 class Pedido(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    itens = models.ManyToManyField(ItemCarrinho)
-    total = models.FloatField(null=False)  # Usando FloatField para o total, de acordo com o preço do produto
-    data_pedido = models.DateTimeField(auto_now_add=True)
+    total = models.DecimalField(max_digits=10, decimal_places=2)
+    produtos = models.ManyToManyField(ItemCarrinho, related_name='pedidos')  # Relacionamento M:N com ItemCarrinho
 
     def __str__(self):
-        return f'Pedido de {self.usuario.username} em {self.data_pedido}'
+        return f'Pedido de {self.usuario.username}'

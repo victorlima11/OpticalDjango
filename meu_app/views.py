@@ -187,7 +187,6 @@ def checkout(request):
 @login_required
 def finalizar_pedido(request):
     if request.method == 'POST':
-        # Recuperar dados do formulário
         nome = request.POST.get('nome')
         email = request.POST.get('email')
         telefone = request.POST.get('telefone')
@@ -196,32 +195,28 @@ def finalizar_pedido(request):
         cep = request.POST.get('cep')
         metodo_pagamento = request.POST.get('pagamento')
 
-        # Recuperar o carrinho do usuário
         try:
             carrinho = get_object_or_404(Carrinho, usuario=request.user)
         except Carrinho.DoesNotExist:
             return render(request, 'erro.html', {'mensagem': 'Carrinho não encontrado.'})
 
-        # Recuperar itens do carrinho
         itens_carrinho = carrinho.itens.all()
 
         if not itens_carrinho.exists():
             return render(request, 'erro.html', {'mensagem': 'Seu carrinho está vazio.'})
 
-        # Calcular o total do pedido
         total = sum(item.subtotal for item in itens_carrinho)
 
-        # Criar o pedido
         pedido = Pedido.objects.create(
             usuario=request.user,
             total=total,
         )
 
-        # Associar os itens do carrinho ao pedido
+        # Associa os itens do carrinho ao pedido
         for item in itens_carrinho:
-            pedido.itens.add(item)
+            pedido.produtos.add(item)  # Correção para usar 'produtos'
 
-        # Salvar o pedido (redundante, mas seguro)
+        # Salvar o pedido
         pedido.save()
 
         # Limpar o carrinho após finalizar o pedido
@@ -237,3 +232,4 @@ def finalizar_pedido(request):
     else:
         # Redirecionar para o checkout caso o método não seja POST
         return redirect('checkout')
+
